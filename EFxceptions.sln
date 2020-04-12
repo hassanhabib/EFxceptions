@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions", "EFxceptions\EFxceptions.csproj", "{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Tests", "EFxceptions.Tests\EFxceptions.Tests.csproj", "{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
+	EndGlobalSection
+EndGlobal
