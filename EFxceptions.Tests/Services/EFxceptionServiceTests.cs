@@ -69,6 +69,27 @@ namespace EFxceptions.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
+        {
+            // given
+            int sqlForeignKeyConstraintConflictErrorCode = 0000;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException foreignKeyConstraintConflictException = CreateSqlException();
+
+            DbUpdateException dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: foreignKeyConstraintConflictException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                    .Returns(sqlForeignKeyConstraintConflictErrorCode);
+
+            // when . then
+            Assert.Throws<DbUpdateException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private SqlException CreateSqlException() => 
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
     }
