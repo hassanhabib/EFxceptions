@@ -7,12 +7,11 @@
 using System;
 using System.Data.SqlClient;
 using EFxceptions.Brokers;
-using EFxceptions.Models.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
 {
-    public class EFxceptionService : IEFxceptionService
+    public partial class EFxceptionService : IEFxceptionService
     {
         private readonly ISqlErrorBroker sqlErrorBroker;
 
@@ -23,8 +22,9 @@ namespace EFxceptions.Services
         {
             SqlException sqlException = GetSqlException(dbUpdateException.InnerException);
             int sqlErrorCode = this.sqlErrorBroker.GetSqlErrorCode(sqlException);
+            ConvertAndThrowMeaningfulException(sqlErrorCode, sqlException.Message);
 
-            throw new DuplicateKeyException(sqlException.Message);
+            throw dbUpdateException;
         }
 
         private SqlException GetSqlException(Exception exception) => (SqlException)exception;
