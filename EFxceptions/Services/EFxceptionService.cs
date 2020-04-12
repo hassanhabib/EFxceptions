@@ -5,7 +5,9 @@
 // ---------------------------------------------------------------
 
 using System;
+using System.Data.SqlClient;
 using EFxceptions.Brokers;
+using EFxceptions.Models.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
@@ -19,7 +21,12 @@ namespace EFxceptions.Services
 
         public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
-            throw new NotImplementedException();
+            SqlException sqlException = GetSqlException(dbUpdateException.InnerException);
+            int sqlErrorCode = this.sqlErrorBroker.GetSqlErrorCode(sqlException);
+
+            throw new DuplicateKeyException(sqlException.Message);
         }
+
+        private SqlException GetSqlException(Exception exception) => (SqlException)exception;
     }
 }
