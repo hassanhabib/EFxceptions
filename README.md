@@ -3,7 +3,7 @@
 </p>
 
 # EFxceptions
-Alice and I have designed and developed this library as a wrapper around the existing EntityFramework DbContext implementation to provide the following values:
+We have designed and developed this library as a wrapper around the existing EntityFramework DbContext implementation to provide the following values:
 
 <ol>
 	<li>Meaningful Exceptions for SQL error codes.</li>
