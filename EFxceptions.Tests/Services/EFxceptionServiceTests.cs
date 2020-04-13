@@ -4,7 +4,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;

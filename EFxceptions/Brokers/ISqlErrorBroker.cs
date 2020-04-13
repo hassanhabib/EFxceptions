@@ -4,7 +4,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace EFxceptions.Brokers
 {

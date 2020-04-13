@@ -5,7 +5,7 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
 using Microsoft.EntityFrameworkCore;
