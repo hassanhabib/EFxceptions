@@ -33,7 +33,7 @@ namespace EFxceptions
             {
                 this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
 
-                throw dbUpdateException;
+                throw;
             }
         }
 
@@ -49,7 +49,7 @@ namespace EFxceptions
             {
                 this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
 
-                throw dbUpdateException;
+                throw;
             }
         }
 
@@ -63,7 +63,7 @@ namespace EFxceptions
             {
                 this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
 
-                throw dbUpdateException;
+                throw;
             }
         }
 
@@ -77,7 +77,7 @@ namespace EFxceptions
             {
                 this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
 
-                throw dbUpdateException;
+                throw;
             }
         }
     }
