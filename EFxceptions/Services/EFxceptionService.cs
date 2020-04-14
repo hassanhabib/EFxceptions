@@ -5,8 +5,8 @@
 // ---------------------------------------------------------------
 
 using System;
-using Microsoft.Data.SqlClient;
 using EFxceptions.Brokers;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
@@ -20,6 +20,7 @@ namespace EFxceptions.Services
 
         public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
+            ValidateInnerException(dbUpdateException);
             SqlException sqlException = GetSqlException(dbUpdateException.InnerException);
             int sqlErrorCode = this.sqlErrorBroker.GetSqlErrorCode(sqlException);
             ConvertAndThrowMeaningfulException(sqlErrorCode, sqlException.Message);

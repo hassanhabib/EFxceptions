@@ -38,7 +38,7 @@ namespace EFxceptions
         }
 
         public override async Task<int> SaveChangesAsync(
-            bool acceptAllChangesOnSuccess, 
+            bool acceptAllChangesOnSuccess,
             CancellationToken cancellationToken = default)
         {
             try

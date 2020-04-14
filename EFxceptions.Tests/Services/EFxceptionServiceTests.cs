@@ -4,11 +4,11 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using Microsoft.Data.SqlClient;
 using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Tynamix.ObjectFiller;
@@ -37,14 +37,14 @@ namespace EFxceptions.Tests.Services
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqlException); 
-             
+                innerException: duplicateKeySqlException);
+
             this.sqlErrorBrokerMock.Setup(broker =>
                 broker.GetSqlErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyException>(() => 
+            Assert.Throws<DuplicateKeyException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -105,7 +105,7 @@ namespace EFxceptions.Tests.Services
                     Times.Never);
         }
 
-        private SqlException CreateSqlException() => 
+        private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
     }
 }
