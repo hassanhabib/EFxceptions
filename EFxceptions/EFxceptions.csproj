@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
     <Copyright>Copyright (c) Hassan Habib &amp; Alice Luo  All rights reserved.</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
@@ -10,10 +10,11 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>Exceptions EntityFramework</PackageTags>
-    <PackageReleaseNotes>This is the first release of EFxceptions, it has the foundation of the library along with handling two basic Sql Exceptions, which are Duplicate Key exception and Foreign Key constraint violation exceptions.</PackageReleaseNotes>
+    <PackageReleaseNotes>Switching to using Microsoft.Data.SqlClient and handling null SQL exceptions</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>EFxceptions.png</PackageIcon>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
