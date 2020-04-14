@@ -4,11 +4,11 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using Microsoft.Data.SqlClient;
 using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Tynamix.ObjectFiller;
@@ -35,16 +35,16 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException duplicateKeySqlException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqlException); 
+                innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
                 broker.GetSqlErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyException>(() => 
+            Assert.Throws<DuplicateKeyException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -56,7 +56,7 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
                 innerException: foreignKeyConstraintConflictException);
 
@@ -77,7 +77,7 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
                 innerException: foreignKeyConstraintConflictException);
 
@@ -90,7 +90,22 @@ namespace EFxceptions.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
-        private SqlException CreateSqlException() => 
+        [Fact]
+        public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
+        {
+            // given
+            var dbUpdateException = new DbUpdateException();
+
+            // when . then
+            Assert.Throws<DbUpdateException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+
+            this.sqlErrorBrokerMock.Verify(broker =>
+                broker.GetSqlErrorCode(It.IsAny<SqlException>()),
+                    Times.Never);
+        }
+
+        private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
     }
 }
