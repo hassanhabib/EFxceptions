@@ -35,10 +35,10 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException duplicateKeySqlException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
                 innerException: duplicateKeySqlException); 
-
+             
             this.sqlErrorBrokerMock.Setup(broker =>
                 broker.GetSqlErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
@@ -56,7 +56,7 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
                 innerException: foreignKeyConstraintConflictException);
 
@@ -77,7 +77,7 @@ namespace EFxceptions.Tests.Services
             string randomErrorMessage = new MnemonicString().GetValue();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
-            DbUpdateException dbUpdateException = new DbUpdateException(
+            var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
                 innerException: foreignKeyConstraintConflictException);
 
@@ -88,6 +88,21 @@ namespace EFxceptions.Tests.Services
             // when . then
             Assert.Throws<DbUpdateException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
+        public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
+        {
+            // given
+            var dbUpdateException = new DbUpdateException();
+
+            // when . then
+            Assert.Throws<DbUpdateException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+
+            this.sqlErrorBrokerMock.Verify(broker =>
+                broker.GetSqlErrorCode(It.IsAny<SqlException>()),
+                    Times.Never);
         }
 
         private SqlException CreateSqlException() => 
