@@ -70,6 +70,27 @@ namespace EFxceptions.Tests.Services
         }
 
         [Fact]
+        public void ShouldThrowInvalidObjectNameException()
+        {
+            // given
+            int sqlInvalidObjectNameErrorCode = 208;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException invalidObjectNameException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidObjectNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidObjectNameException))
+                    .Returns(sqlInvalidObjectNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidObjectNameException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
         {
             // given
