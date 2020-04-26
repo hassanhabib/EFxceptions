@@ -28,23 +28,65 @@ namespace EFxceptions.Tests.Services
         }
 
         [Fact]
-        public void ShouldThrowDuplicateKeyException()
+        public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
         {
             // given
-            int sqlDuplicateKeyErrorCode = 2627;
+            int sqlForeignKeyConstraintConflictErrorCode = 0000;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException duplicateKeySqlException = CreateSqlException();
+            SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqlException);
+                innerException: foreignKeyConstraintConflictException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(duplicateKeySqlException))
-                    .Returns(sqlDuplicateKeyErrorCode);
+                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                    .Returns(sqlForeignKeyConstraintConflictErrorCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyException>(() =>
+            Assert.Throws<DbUpdateException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
+        public void ShouldThrowInvalidColumnNameException()
+        {
+            // given
+            int sqlInvalidColumnNameErrorCode = 207;
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException invalidColumnNameException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidColumnNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidColumnNameException))
+                    .Returns(sqlInvalidColumnNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidColumnNameException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
+        public void ShouldThrowInvalidObjectNameException()
+        {
+            // given
+            int sqlInvalidObjectNameErrorCode = 208;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException invalidObjectNameException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidObjectNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidObjectNameException))
+                    .Returns(sqlInvalidObjectNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidObjectNameException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -70,23 +112,23 @@ namespace EFxceptions.Tests.Services
         }
 
         [Fact]
-        public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
+        public void ShouldThrowDuplicateKeyException()
         {
             // given
-            int sqlForeignKeyConstraintConflictErrorCode = 0000;
+            int sqlDuplicateKeyErrorCode = 2627;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException foreignKeyConstraintConflictException = CreateSqlException();
+            SqlException duplicateKeySqlException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: foreignKeyConstraintConflictException);
+                innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
-                    .Returns(sqlForeignKeyConstraintConflictErrorCode);
+                broker.GetSqlErrorCode(duplicateKeySqlException))
+                    .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
-            Assert.Throws<DbUpdateException>(() =>
+            Assert.Throws<DuplicateKeyException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
@@ -107,5 +149,7 @@ namespace EFxceptions.Tests.Services
 
         private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
+
+        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
 }

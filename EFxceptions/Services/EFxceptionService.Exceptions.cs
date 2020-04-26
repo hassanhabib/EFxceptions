@@ -14,10 +14,14 @@ namespace EFxceptions.Services
         {
             switch (code)
             {
-                case 2627:
-                    throw new DuplicateKeyException(message);
+                case 207:
+                    throw new InvalidColumnNameException(message);
+                case 208:
+                    throw new InvalidObjectNameException(message);
                 case 547:
                     throw new ForeignKeyConstraintConflictException(message);
+                case 2627:
+                    throw new DuplicateKeyException(message); 
             }
         }
     }
