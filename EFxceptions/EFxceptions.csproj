@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.2</Version>
+    <Version>0.3</Version>
     <Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
     <Copyright>Copyright (c) Hassan Habib &amp; Alice Luo  All rights reserved.</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
@@ -10,11 +10,15 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>Exceptions EntityFramework</PackageTags>
-    <PackageReleaseNotes>Switching to using Microsoft.Data.SqlClient and handling null SQL exceptions</PackageReleaseNotes>
+    <PackageReleaseNotes>Handle 207 and 208 SQL errors with the following exceptions: 
+InvalidColumnNameException mapped to error 207
+InvalidObjectNameException mapped to error 208</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>EFxceptions.png</PackageIcon>
     <NeutralLanguage>en</NeutralLanguage>
+    <Authors>Hassan Habib &amp; Alice Luo</Authors>
+    <Company>Piorsoft, LLC</Company>
   </PropertyGroup>
 
   <ItemGroup>
