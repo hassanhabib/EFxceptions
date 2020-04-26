@@ -14,6 +14,8 @@ namespace EFxceptions.Services
         {
             switch (code)
             {
+                case 207:
+                    throw new InvalidColumnNameException(message);
                 case 208:
                     throw new InvalidObjectNameException(message);
                 case 547:
