@@ -14,10 +14,16 @@ namespace EFxceptions
 {
     public class EFxceptionsContext : DbContext
     {
-        private readonly IEFxceptionService eFxceptionService;
-        private readonly ISqlErrorBroker sqlErrorBroker;
+        private IEFxceptionService eFxceptionService;
+        private ISqlErrorBroker sqlErrorBroker;
 
-        public EFxceptionsContext(DbContextOptions options) : base(options)
+        protected EFxceptionsContext() =>
+            InitializeInternalServices();
+
+        public EFxceptionsContext(DbContextOptions options) : base(options) =>
+            InitializeInternalServices();
+
+        private void InitializeInternalServices()
         {
             this.sqlErrorBroker = new SqlErrorBroker();
             this.eFxceptionService = new EFxceptionService(this.sqlErrorBroker);
