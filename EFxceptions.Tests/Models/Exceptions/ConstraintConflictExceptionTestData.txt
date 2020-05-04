@@ -1,0 +1,27 @@
+﻿The INSERT statement conflicted with the FOREIGN KEY constraint "FK_QuestionObject_GroupItem_GroupItemID". The conflict occurred in database "aspnet-VotingWebApp-02945df4-961a-4b8f-8999-19aa61dfd02e", table "dbo.GroupItem", column 'GroupItemID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Sup_Item_Sup_Item_Cat". The conflict occurred in database "dev_bo", table "dbo.Sup_Item_Cat".
+The INSERT statement conflicted with the FOREIGN KEY constraint "FKUSERS_AVAT731248". The conflict occurred in database "gk314", table "gk314.USERS", column 'userId'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FKUSERS_AVAT731248". The conflict occurred in database "gk314", table "gk314.USERS", column 'userId'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "BSC_U_RA_AN_FK". The conflict occurred in database "DMDB", table "dbo.BSC_AN", column 'AN_ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_QuestionObject_GroupItem_GroupItemID". The conflict occurred in database "aspnet-VotingWebApp-02945df4-961a-4b8f-8999-19aa61dfd02e", table "dbo.GroupItem", column 'GroupItemID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK__Products__Catego__99BF96C4". The conflict occurred in database "HackCompany", table "dbo.Categories", column 'CategoryID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK__tb_Transa__Recor__4E88ABD4". The conflict occurred in database "CBCFX", table "dbo.tb_Users", column 'UserName'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.OrderItem_dbo.TshirtOrder_TshirtOrderId". The conflict occurred in database "dbbb", table "dbo.TshirtOrder", column 'Id'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_BookingCustomer_Booking". The conflict occurred in database "C:\USERS\B00711882\SOURCE\WORKSPACES\SAILAWAY\SAILAWAY FINAL\SAILAWAYV2\SAILAWAYV2\APP_DATA\SAILAWAY.MDF", table "dbo.Booking", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.OrderDetails_dbo.Orders_OrderId". The conflict occurred in database "MythData.mdf", table "dbo.Orders", column 'Id'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Players_dbo.Teams_TeamId". The conflict occurred in database "Web", table "dbo.Teams", column 'TeamId'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.PlanShiftAssignments_dbo.User_UserId". The conflict occurred in database "SWS", table "dbo.User", column 'Id'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Dimfact_DimProduction". The conflict occurred in database "pp dw", table "dbo.DimProduction", column 'Production_ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_dbo.Posts_dbo.AspNetUsers_Id". The conflict occurred in database "aspnet-WebEnterprise-20190201040107", table "dbo.AspNetUsers", column 'Id'.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_dbo.UserDetails_dbo.Companies_CompanyId". The conflict occurred in database "aspnet-eksp-20161223071733", table "dbo.Companies", column 'CompanyId'.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK__patient_a__id_no__27C3E46E". The conflict occurred in database "PMS", table "dbo.patient", column 'id_no'.
+The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_CustomersTbl_CountriesTbl". The conflict occurred in database "AlwaleedSSSystem", table "dbo.CountriesTbl", column 'CountryID'.
+The UPDATE statement conflicted with the REFERENCE constraint "FK__patient_a__id_no__27C3E46E". The conflict occurred in database "PMS", table "dbo.patient_address", column 'id_no'.
+The DELETE statement conflicted with the REFERENCE constraint "FK_Phones_Contacts_ContactId". The conflict occurred in database "EfCoreDeleteExceptionsPlayground", table "dbo.Phones", column 'ContactId'.
+The DELETE statement conflicted with the SAME TABLE REFERENCE constraint "FK_ArchiveFolder_ArchiveFolder". The conflict occurred in database "EnterpriseVaultDirectory", table "dbo.ArchiveFolder", column 'ParentFolderRootIdentity'.
+The DELETE statement conflicted with the SAME TABLE REFERENCE constraint "FK_FINANCIALTRANSACTIONLINEITEM_SOURCELINEITEMID". The conflict occurred in database "databasename", table "dbo.FINANCIALTRANSACTIONLINEITEM", column 'SOURCELINEITEMID'.
+The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_WorkspaceSettings_Workspace". The conflict occurred in database "ClearRisk2_0", table "dbo.WorkspaceSettings", column 'Id'.
+The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_Sales_Date". The conflict occurred in database "SalesDataWarehouse", table "dbo.Date", column 'DateKey'.
+The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_tblDomare_PersN__5F7E2DAC". The conflict occurred in database "almu0004", table "dbo.tblBana", column 'BanNR'.
+The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_tblDomare_PersN__5F7E2DAC". The conflict occurred in database "almu0004", table "dbo.tblBana", column 'BanNR'.
+The ALTER TABLE statement conflicted with the CHECK constraint "CHECK_CATEGORIA". The conflict occurred in database "SIGOB_Contraloria", table "contrato_sigob.relacion_institucion_categoria", column 'id_categoria'.

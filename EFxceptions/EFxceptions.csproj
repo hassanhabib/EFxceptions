@@ -19,9 +19,12 @@ InvalidObjectNameException mapped to error 208</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Hassan Habib &amp; Alice Luo</Authors>
     <Company>Piorsoft, LLC</Company>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
   </ItemGroup>
