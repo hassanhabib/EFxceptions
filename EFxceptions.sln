@@ -3,11 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions", "EFxceptions\EFxceptions.csproj", "{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions", "EFxceptions\EFxceptions.csproj", "{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Tests", "EFxceptions.Tests\EFxceptions.Tests.csproj", "{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.Tests", "EFxceptions.Tests\EFxceptions.Tests.csproj", "{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EFxceptions.Shared", "EFxceptions.Shared\EFxceptions.Shared.shproj", "{C2A76918-4ECA-4778-B4C7-3065C5EC149C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity", "EFxceptions.Identity\EFxceptions.Identity.csproj", "{8419C4D3-6780-422E-A640-1B66DF7B2CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.Tests", "EFxceptions.Identity.Tests\EFxceptions.Identity.Tests.csproj", "{82530154-333E-4493-A25B-77D731F5EE40}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{8419c4d3-6780-422e-a640-1b66df7b2cce}*SharedItemsImports = 5
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{a379f3e6-af92-4eb6-ba07-fe188df0ae2d}*SharedItemsImports = 5
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{c2a76918-4eca-4778-b4c7-3065c5ec149c}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +32,14 @@ Global
 		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8419C4D3-6780-422E-A640-1B66DF7B2CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8419C4D3-6780-422E-A640-1B66DF7B2CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8419C4D3-6780-422E-A640-1B66DF7B2CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8419C4D3-6780-422E-A640-1B66DF7B2CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82530154-333E-4493-A25B-77D731F5EE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82530154-333E-4493-A25B-77D731F5EE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82530154-333E-4493-A25B-77D731F5EE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82530154-333E-4493-A25B-77D731F5EE40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

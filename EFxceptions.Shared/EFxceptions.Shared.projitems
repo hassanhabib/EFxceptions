@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c2a76918-4eca-4778-b4c7-3065c5ec149c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>EFxceptions.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Brokers\ISqlErrorBroker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Brokers\SqlErrorBroker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\DuplicateKeyException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\ForeignKeyConstraintConflictException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidColumnNameException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidObjectNameException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.Exceptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.Validations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IEFxceptionService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)License.txt" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\EFxceptions.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

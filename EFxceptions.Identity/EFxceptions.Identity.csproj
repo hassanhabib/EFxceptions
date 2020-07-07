@@ -28,16 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\EFxceptions.Shared\License.txt">
+    <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png">
+    <None Include="..\EFxceptions.Shared\License.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
   <Import Project="..\EFxceptions.Shared\EFxceptions.Shared.projitems" Label="Shared" />
-
 </Project>
