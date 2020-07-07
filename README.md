@@ -23,7 +23,7 @@ We have designed and developed this library as a wrapper around the existing Ent
 [![preview version](https://img.shields.io/nuget/vpre/EFxceptions.Identity)](https://www.nuget.org/packages/EFxceptions.Identity/absoluteLatest)
 
 A dedicated EFxeptions port that provides an `IDentityDbContext` to inherit from, support Microsoft ASP.Core Identity using EF Core.
-Available in the [EFxceptions.Identity](https://www.nuget.org/packages/EFxceptions.Identity) package.
+Available in the [`EFxceptions.Identity`](https://www.nuget.org/packages/EFxceptions.Identity) package.
 
 ## Installation 
 You can get EFxceptions [Nuget](https://www.nuget.org/packages/EFxceptions/) package by typing:
