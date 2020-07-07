@@ -1,5 +1,7 @@
+
+
 <p align="center">
-  <img width="25%" height="25%" src="https://github.com/hassanhabib/EFxceptions/blob/master/EFxceptions/Resources/EFxceptions.png?raw=true">
+  <img width="25%" height="25%" src="https://github.com/hassanhabib/EFxceptions/blob/master/EFxceptions.Shared/Resources/EFxceptions.png?raw=true">
 </p>
 
 # EFxceptions
@@ -13,6 +15,11 @@ We have designed and developed this library as a wrapper around the existing Ent
 
 <br>
 
+# EFxeptions.Identity
+
+A dedicated EFxeptions port that provides an `IDentityDbContext` to inherit from, support Microsoft ASP.Core Identity using EF Core.
+Available in the [EFxceptions.Identity](https://www.nuget.org/packages/EFxceptions.Identity) package.
+
 ## Installation 
 You can get EFxceptions [Nuget](https://www.nuget.org/packages/EFxceptions/) package by typing:
 ```powershell
@@ -22,7 +29,7 @@ Install-Package EFxceptions
 <br>
 
 ## Integration
-Replace your existing ```DbContext``` class to ```EFxceptionsContext``` as follows:
+Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or `EFxeption.IDentityDbContext`) as follows:
 
 #### Before:
  
