@@ -17,7 +17,7 @@ We have designed and developed this library as a wrapper around the existing Ent
 
 # EFxeptions.Identity
 
-A dedicated EFxeptions port that provides an `IDentityDbContext` to inherit from, support Microsoft ASP.Core Identity using EF Core.
+A dedicated EFxeptions port that provides an `EFxceptionContext` that inherits from `Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext` to inherit from, to support Microsoft ASP.Core Identity using EF Core.
 Available in the [EFxceptions.Identity](https://www.nuget.org/packages/EFxceptions.Identity) package.
 
 ## Installation 
