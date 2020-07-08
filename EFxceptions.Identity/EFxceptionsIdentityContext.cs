@@ -15,32 +15,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Identity
 {
-    public class EFxceptionsContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
+    public class EFxceptionsIdentityContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
     {
-        protected EFxceptionsContext()
+        protected EFxceptionsIdentityContext()
         {
         }
 
-        public EFxceptionsContext(DbContextOptions options) : base(options)
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         {
         }
     }
 
-    public class EFxceptionsContext<TUser, TRole, TKey> : EFxceptionsContext<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>, IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey> : EFxceptionsIdentityContext<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>, IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TKey : IEquatable<TKey>
     {
-        protected EFxceptionsContext()
+        protected EFxceptionsIdentityContext()
         {
         }
 
-        public EFxceptionsContext(DbContextOptions options) : base(options)
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         {
         }
     }
 
-    public class EFxceptionsContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TKey : IEquatable<TKey>
@@ -53,10 +53,10 @@ namespace EFxceptions.Identity
         private IEFxceptionService eFxceptionService;
         private ISqlErrorBroker sqlErrorBroker;
 
-        protected EFxceptionsContext() =>
+        protected EFxceptionsIdentityContext() =>
             InitializeInternalServices();
 
-        public EFxceptionsContext(DbContextOptions options) : base(options) =>
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options) =>
             InitializeInternalServices();
 
         private void InitializeInternalServices()

@@ -5,6 +5,8 @@
 </p>
 
 # EFxceptions
+[![preview version](https://img.shields.io/nuget/vpre/EFxceptions)](https://www.nuget.org/packages/EFxceptions/absoluteLatest)
+
 We have designed and developed this library as a wrapper around the existing EntityFramework DbContext implementation to provide the following values:
 
 <ol>
@@ -16,8 +18,9 @@ We have designed and developed this library as a wrapper around the existing Ent
 <br>
 
 # EFxeptions.Identity
+[![preview version](https://img.shields.io/nuget/vpre/EFxceptions.Identity)](https://www.nuget.org/packages/EFxceptions.Identity/absoluteLatest)
 
-A dedicated EFxeptions port that provides an `IDentityDbContext` to inherit from, support Microsoft ASP.Core Identity using EF Core.
+A dedicated EFxeptions port that provides an `IdentityDbContext` to inherit from, to support Microsoft ASP.Core Identity using EF Core.
 Available in the [EFxceptions.Identity](https://www.nuget.org/packages/EFxceptions.Identity) package.
 
 ## Installation 
@@ -29,7 +32,7 @@ Install-Package EFxceptions
 <br>
 
 ## Integration
-Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or `EFxeption.IDentityDbContext`) as follows:
+Replace your existing ```DbContext``` class with ```EFxceptionsContext``` (or your `IdentityDbContext` with `EFxeption.EFxceptionIdentityContext`) as follows:
 
 #### Before:
  
