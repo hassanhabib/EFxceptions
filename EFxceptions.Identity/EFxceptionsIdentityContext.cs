@@ -4,24 +4,59 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using EFxceptions.Brokers;
 using EFxceptions.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Identity
 {
-    public class EFxceptionsContext : IdentityDbContext
+    public class EFxceptionsIdentityContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
+    {
+        protected EFxceptionsIdentityContext()
+        {
+        }
+
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        {
+        }
+    }
+
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey> : EFxceptionsIdentityContext<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>, IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
+        where TUser : IdentityUser<TKey>
+        where TRole : IdentityRole<TKey>
+        where TKey : IEquatable<TKey>
+    {
+        protected EFxceptionsIdentityContext()
+        {
+        }
+
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        {
+        }
+    }
+
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
+        where TUser : IdentityUser<TKey>
+        where TRole : IdentityRole<TKey>
+        where TKey : IEquatable<TKey>
+        where TUserClaim : IdentityUserClaim<TKey>
+        where TUserRole : IdentityUserRole<TKey>
+        where TUserLogin : IdentityUserLogin<TKey>
+        where TRoleClaim : IdentityRoleClaim<TKey>
+        where TUserToken : IdentityUserToken<TKey>
     {
         private IEFxceptionService eFxceptionService;
         private ISqlErrorBroker sqlErrorBroker;
 
-        protected EFxceptionsContext() =>
+        protected EFxceptionsIdentityContext() =>
             InitializeInternalServices();
 
-        public EFxceptionsContext(DbContextOptions<EFxceptionsContext> options) : base(options) =>
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options) =>
             InitializeInternalServices();
 
         private void InitializeInternalServices()
