@@ -10,7 +10,8 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>Exceptions EntityFramework</PackageTags>
-    <PackageReleaseNotes>Remove unnecessary reference to Identity</PackageReleaseNotes>
+    <PackageReleaseNotes>- Remove unnecessary reference to Identity
+- Downgrade dependent packages to allow for a broader audience</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>EFxceptions.png</PackageIcon>
@@ -23,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,6 +4,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
@@ -136,7 +137,7 @@ namespace EFxceptions.Identity.Tests
         public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
         {
             // given
-            var dbUpdateException = new DbUpdateException();
+            var dbUpdateException = new DbUpdateException(null, default(Exception));
 
             // when . then
             Assert.Throws<DbUpdateException>(() =>

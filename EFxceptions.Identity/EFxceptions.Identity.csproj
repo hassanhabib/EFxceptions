@@ -10,8 +10,7 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>Exceptions EntityFramework</PackageTags>
-    <PackageReleaseNotes>- Renamed EFxceptionContext to EFxceptionIdentityContext
-- Added additonal EFxceptionIdentityContext signatures</PackageReleaseNotes>
+    <PackageReleaseNotes>- Downgrade dependent packages to allow for a broader audience</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>EFxceptions.png</PackageIcon>
@@ -23,9 +22,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
