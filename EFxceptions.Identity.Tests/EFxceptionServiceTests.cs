@@ -125,8 +125,8 @@ namespace EFxceptions.Identity.Tests
                 innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                    broker.GetSqlErrorCode(duplicateKeySqlException))
-                .Returns(sqlDuplicateKeyErrorCode);
+                broker.GetSqlErrorCode(duplicateKeySqlException))
+                    .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
             Assert.Throws<DuplicateKeyUniqueIndexException>(() =>
