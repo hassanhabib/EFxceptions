@@ -113,7 +113,7 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowDuplicateKeyUniqueIndexException()
+        public void ShouldThrowDuplicateKeyWithUniqueIndexException()
         {
             // given
             int sqlDuplicateKeyErrorCode = 2601;
@@ -129,7 +129,7 @@ namespace EFxceptions.Identity.Tests
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
-            Assert.Throws<DuplicateKeyUniqueIndexException>(() =>
+            Assert.Throws<DuplicateKeyWithUniqueIndexException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 

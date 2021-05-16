@@ -21,7 +21,7 @@ namespace EFxceptions.Services
                 case 547:
                     throw new ForeignKeyConstraintConflictException(message);
                 case 2601:
-                    throw new DuplicateKeyUniqueIndexException(message);
+                    throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
                     throw new DuplicateKeyException(message); 
             }

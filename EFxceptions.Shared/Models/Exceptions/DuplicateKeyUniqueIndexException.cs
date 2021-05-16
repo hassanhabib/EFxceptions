@@ -8,8 +8,8 @@ using System;
 
 namespace EFxceptions.Models.Exceptions
 {
-    public class DuplicateKeyUniqueIndexException : Exception
+    public class DuplicateKeyWithUniqueIndexException : Exception
     {
-        public DuplicateKeyUniqueIndexException(string message) : base(message) { }
+        public DuplicateKeyWithUniqueIndexException(string message) : base(message) { }
     }
 }
