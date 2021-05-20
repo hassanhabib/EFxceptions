@@ -20,6 +20,8 @@ namespace EFxceptions.Services
                     throw new InvalidObjectNameException(message);
                 case 547:
                     throw new ForeignKeyConstraintConflictException(message);
+                case 2601:
+                    throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
                     throw new DuplicateKeyException(message); 
             }

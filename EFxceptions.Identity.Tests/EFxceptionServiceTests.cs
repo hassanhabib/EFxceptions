@@ -113,6 +113,27 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
+        public void ShouldThrowDuplicateKeyWithUniqueIndexException()
+        {
+            // given
+            int sqlDuplicateKeyErrorCode = 2601;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException duplicateKeySqlException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: duplicateKeySqlException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(duplicateKeySqlException))
+                    .Returns(sqlDuplicateKeyErrorCode);
+
+            // when . then
+            Assert.Throws<DuplicateKeyWithUniqueIndexException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDuplicateKeyException()
         {
             // given
