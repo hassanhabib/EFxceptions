@@ -4,6 +4,8 @@
   <img width="25%" height="25%" src="https://github.com/hassanhabib/EFxceptions/blob/master/EFxceptions.Shared/Resources/EFxceptions.png?raw=true">
 </p>
 
+[![The Standard - COMPLIANT](https://img.shields.io/badge/The_Standard-COMPLIANT-2ea44f)](https://github.com/hassanhabib/The-Standard)
+
 # EFxceptions
 
 [![preview version](https://img.shields.io/nuget/vpre/EFxceptions)](https://www.nuget.org/packages/EFxceptions/absoluteLatest)
