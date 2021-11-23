@@ -1,25 +1,25 @@
-name: .NET
-
+name: EFxceptions Build Pipeline
 on:
   push:
-    branches: [ master ]
+    branches:
+    - master
   pull_request:
-    branches: [ master ]
-
+    branches:
+    - master
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
+    - name: Checking Out Code
+      uses: actions/checkout@v2
+    - name: Installing .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
-    - name: Restore dependencies
+        dotnet-version: 6.0.100
+        include-prerelease: false
+    - name: Restoring Nuget Packages
       run: dotnet restore
-    - name: Build
+    - name: Building Project
       run: dotnet build --no-restore
-    - name: Test
+    - name: Running Tests
       run: dotnet test --no-build --verbosity normal
