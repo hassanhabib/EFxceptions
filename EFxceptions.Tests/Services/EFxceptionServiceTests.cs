@@ -169,6 +169,27 @@ namespace EFxceptions.Tests.Services
                     Times.Never);
         }
 
+        [Fact]
+        public void ShouldThrowAggregateInUpdateException()
+        {
+            // given
+            int sqlDuplicateKeyErrorCode = 157;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException aggregateInUpdateException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: aggregateInUpdateException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(aggregateInUpdateException))
+                    .Returns(sqlDuplicateKeyErrorCode);
+
+            // when . then
+            Assert.Throws<AggregateInUpdateStatementException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
 
