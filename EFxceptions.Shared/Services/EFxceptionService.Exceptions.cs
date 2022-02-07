@@ -1,5 +1,5 @@
 ﻿// ---------------------------------------------------------------
-// Copyright (c) Hassan Habib, Alice Luo and Shimmy Weitzhandler  All rights reserved.
+// Copyright (c) Hassan Habib, Alice Luo, Shimmy Weitzhandler, Francis Adediran  All rights reserved.
 // Licensed under the MIT License.
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
@@ -14,6 +14,8 @@ namespace EFxceptions.Services
         {
             switch (code)
             {
+                case 157:
+                    throw new AggregateInUpdateStatementException(message);
                 case 207:
                     throw new InvalidColumnNameException(message);
                 case 208:
@@ -23,7 +25,7 @@ namespace EFxceptions.Services
                 case 2601:
                     throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
-                    throw new DuplicateKeyException(message); 
+                    throw new DuplicateKeyException(message);
             }
         }
     }
