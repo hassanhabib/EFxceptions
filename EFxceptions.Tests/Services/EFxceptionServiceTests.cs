@@ -169,6 +169,27 @@ namespace EFxceptions.Tests.Services
                     Times.Never);
         }
 
+        [Fact]
+        public void ShouldThrowMaxLengthException()
+        {
+            // given
+            int maxLengthErrorCode = 8152;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            SqlException maxLengthSqlException = CreateSqlException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: maxLengthSqlException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(maxLengthSqlException))
+                    .Returns(maxLengthErrorCode);
+
+            // when . then
+            Assert.Throws<MaxLengthException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
 

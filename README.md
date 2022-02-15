@@ -71,6 +71,7 @@ SQL server supports over [41,000 error codes](https://docs.microsoft.com/en-us/s
 |208|Invalid object name '%.*ls'.|InvalidObjectNameException|
 |547|The %ls statement conflicted with the %ls constraint "%.*ls". The conflict occurred in database "%.*ls", table "%.*ls"%ls%.*ls%ls.|ForeignKeyConstraintConflictException|
 |2627|Violation of %ls constraint '%.*ls'. Cannot insert duplicate key in object '%.*ls'.|DuplicateKeyException|
+|8152|String or binary data would be truncated.|MaxLengthException|
 
 
 <br >
