@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Identity
 {
-    public class EFxceptionsIdentityContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
+    public class EFxceptionsIdentityContext<TUser> : EFxceptionsIdentityContext<TUser, IdentityRole, string> where TUser : IdentityUser
     {
         protected EFxceptionsIdentityContext()
         {
