@@ -10,14 +10,23 @@
     <Copyright>Copyright (c) Hassan Habib, Alice Luo, Shimmy Weitzhandler and Mabrouk Mahdhi All rights reserved.</Copyright>
     <PackageProjectUrl>https://www.efxceptions.com</PackageProjectUrl>
     <PackageIcon>EFxceptions.png</PackageIcon>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>Exceptions EntityFramework</PackageTags>
+    <PackageReleaseNotes>Implementation for MySql</PackageReleaseNotes>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="https:\github.com\hassanhabib\EFxceptions" />
+	  <None Include="..\EFxceptions.Shared\License.txt">
+		  <Pack>True</Pack>
+		  <PackagePath></PackagePath>
+	  </None>
+	  <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png" Link="EFxceptions.png">
+		  <PackagePath>\</PackagePath>
+		  <Pack>True</Pack>
+	  </None>
   </ItemGroup>
 
   <ItemGroup>
