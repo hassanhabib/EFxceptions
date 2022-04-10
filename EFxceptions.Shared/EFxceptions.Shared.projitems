@@ -9,8 +9,7 @@
     <Import_RootNamespace>EFxceptions.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Brokers\ISqlErrorBroker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Brokers\SqlErrorBroker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Brokers\IDbErrorBroker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\DuplicateKeyWithUniqueIndexException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\DuplicateKeyException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\ForeignKeyConstraintConflictException.cs" />

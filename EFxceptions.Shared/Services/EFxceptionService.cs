@@ -4,30 +4,30 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
 using EFxceptions.Brokers;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService : IEFxceptionService
+    public partial class EFxceptionService<TDbException> : IEFxceptionService
+        where TDbException : DbException
     {
-        private readonly ISqlErrorBroker sqlErrorBroker;
+        private readonly IDbErrorBroker<TDbException> errorBroker;
 
-        public EFxceptionService(ISqlErrorBroker sqlErrorBroker) =>
-            this.sqlErrorBroker = sqlErrorBroker;
+        public EFxceptionService(IDbErrorBroker<TDbException> errorBroker) =>
+            this.errorBroker = errorBroker;
 
         public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
             ValidateInnerException(dbUpdateException);
-            SqlException sqlException = GetSqlException(dbUpdateException.InnerException);
-            int sqlErrorCode = this.sqlErrorBroker.GetSqlErrorCode(sqlException);
-            ConvertAndThrowMeaningfulException(sqlErrorCode, sqlException.Message);
+            TDbException dbException = GetSqlException(dbUpdateException.InnerException);
+            int sqlErrorCode = this.errorBroker.GetSqlErrorCode(dbException);
+            ConvertAndThrowMeaningfulException(sqlErrorCode, dbException.Message);
 
             throw dbUpdateException;
         }
 
-        private SqlException GetSqlException(Exception exception) => (SqlException)exception;
+        private TDbException GetSqlException(Exception exception) => (TDbException)exception;
     }
 }

@@ -19,12 +19,12 @@ namespace EFxceptions.Identity.Tests
 {
     public class EFxceptionServiceTests
     {
-        private readonly Mock<ISqlErrorBroker> sqlErrorBrokerMock;
+        private readonly Mock<IDbErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
 
         public EFxceptionServiceTests()
         {
-            this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
+            this.sqlErrorBrokerMock = new Mock<IDbErrorBroker>();
             this.efxceptionService = new EFxceptionService(this.sqlErrorBrokerMock.Object);
         }
 

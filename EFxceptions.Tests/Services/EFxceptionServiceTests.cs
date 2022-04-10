@@ -4,14 +4,14 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using System;
+using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
 using Xunit;
 
@@ -25,7 +25,7 @@ namespace EFxceptions.Tests.Services
         public EFxceptionServiceTests()
         {
             this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
-            this.efxceptionService = new EFxceptionService(this.sqlErrorBrokerMock.Object);
+            this.efxceptionService = new EFxceptionService<SqlException>(this.sqlErrorBrokerMock.Object);
         }
 
         [Fact]

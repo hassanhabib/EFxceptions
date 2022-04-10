@@ -4,12 +4,12 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using Microsoft.Data.SqlClient;
+using System.Data.Common;
 
 namespace EFxceptions.Brokers
 {
-    public interface ISqlErrorBroker
+    public interface IDbErrorBroker<TException> where TException : DbException
     {
-        int GetSqlErrorCode(SqlException sqlException);
+        int GetSqlErrorCode(TException exception);
     }
 }

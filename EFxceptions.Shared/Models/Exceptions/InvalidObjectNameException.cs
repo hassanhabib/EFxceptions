@@ -4,8 +4,6 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-
 namespace EFxceptions.Models.Exceptions
 {
     public class InvalidObjectNameException : Exception

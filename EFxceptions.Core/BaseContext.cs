@@ -1,70 +1,39 @@
 ﻿// ---------------------------------------------------------------
-// Copyright (c) Hassan Habib, Alice Luo and Shimmy Weitzhandler All rights reserved.
+// Copyright (c) Hassan Habib, Alice Luo, Shimmy Weitzhandler and Mabrouk Mahdhi.  All rights reserved.
 // Licensed under the MIT License.
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using EFxceptions.Brokers;
 using EFxceptions.Services;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
-namespace EFxceptions.Identity
+namespace EFxceptions.Core
 {
-    public class EFxceptionsIdentityContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
-    {
-        protected EFxceptionsIdentityContext()
-        {
-        }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
-        {
-        }
-    }
-
-    public class EFxceptionsIdentityContext<TUser, TRole, TKey> : EFxceptionsIdentityContext<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>, IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
-        where TUser : IdentityUser<TKey>
-        where TRole : IdentityRole<TKey>
-        where TKey : IEquatable<TKey>
-    {
-        protected EFxceptionsIdentityContext()
-        {
-        }
-
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
-        {
-        }
-    }
-
-    public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
-        where TUser : IdentityUser<TKey>
-        where TRole : IdentityRole<TKey>
-        where TKey : IEquatable<TKey>
-        where TUserClaim : IdentityUserClaim<TKey>
-        where TUserRole : IdentityUserRole<TKey>
-        where TUserLogin : IdentityUserLogin<TKey>
-        where TRoleClaim : IdentityRoleClaim<TKey>
-        where TUserToken : IdentityUserToken<TKey>
+    public abstract class BaseContext<TDbException> : DbContext
+        where TDbException : DbException
     {
         private IEFxceptionService eFxceptionService;
-        private IDbErrorBroker sqlErrorBroker;
+        private IDbErrorBroker<TDbException> errorBroker;
 
-        protected EFxceptionsIdentityContext() =>
-            InitializeInternalServices();
+        protected BaseContext()
+            => InitializeInternalServices();
 
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options) =>
+
+        public BaseContext(DbContextOptions options) : base(options) =>
             InitializeInternalServices();
 
         private void InitializeInternalServices()
         {
-            this.sqlErrorBroker = new DbErrorBroker();
-            this.eFxceptionService = new EFxceptionService(this.sqlErrorBroker);
+            this.errorBroker = CreateErrorBroker();
+            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
         }
 
+        protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
+        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             try
