@@ -4,11 +4,26 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1.0.0</Version>
+    <Authors>Hassan Habib, Alice Luo, Shimmy Weitzhandler and Mabrouk Mahdhi</Authors>
+    <Company>Piorsoft, LLC</Company>
+    <Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a MySQL Server and converts them into meaningful exceptions.</Description>
+    <Copyright>Copyright (c) Hassan Habib, Alice Luo, Shimmy Weitzhandler and Mabrouk Mahdhi  All rights reserved.</Copyright>
+    <PackageProjectUrl>https://www.efxceptions.com</PackageProjectUrl>
+    <PackageIcon>EFxceptions.png</PackageIcon>
+    <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>Exceptions EntityFramework</PackageTags>
+    <PackageReleaseNotes>Implementation for MySql</PackageReleaseNotes>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>01.0.0</AssemblyVersion>
+    <FileVersion>01.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png" Link="EFxceptions.png">
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
   </ItemGroup>
