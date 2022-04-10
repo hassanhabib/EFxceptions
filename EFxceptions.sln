@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4B24037D-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Core", "EFxceptions.Core\EFxceptions.Core.csproj", "{59D3D848-FDEE-410D-8803-32F9886315B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.MySql.Tests", "EFxceptions.MySql.Tests\EFxceptions.MySql.Tests.csproj", "{1B113AD2-5E1A-4434-ACEE-4F16C39966C6}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		EFxceptions.Shared\EFxceptions.Shared.projitems*{59d3d848-fdee-410d-8803-32f9886315b6}*SharedItemsImports = 5
@@ -63,6 +65,10 @@ Global
 		{59D3D848-FDEE-410D-8803-32F9886315B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59D3D848-FDEE-410D-8803-32F9886315B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59D3D848-FDEE-410D-8803-32F9886315B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B113AD2-5E1A-4434-ACEE-4F16C39966C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B113AD2-5E1A-4434-ACEE-4F16C39966C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B113AD2-5E1A-4434-ACEE-4F16C39966C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B113AD2-5E1A-4434-ACEE-4F16C39966C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{82530154-333E-4493-A25B-77D731F5EE40} = {CC32C26E-38DE-4E95-90DA-8F2FFA9D7935}
 		{1599F3BB-3C93-49B0-9784-BFE12864FD88} = {1C2EBE6B-22A2-4EFF-9F4C-D8D274E62AF4}
 		{59D3D848-FDEE-410D-8803-32F9886315B6} = {4B24037D-E49E-45B5-8CD0-281EDEBE4E02}
+		{1B113AD2-5E1A-4434-ACEE-4F16C39966C6} = {1C2EBE6B-22A2-4EFF-9F4C-D8D274E62AF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
