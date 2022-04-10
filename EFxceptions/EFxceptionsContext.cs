@@ -4,11 +4,11 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System.Threading;
-using System.Threading.Tasks;
 using EFxceptions.Brokers;
 using EFxceptions.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EFxceptions
 {

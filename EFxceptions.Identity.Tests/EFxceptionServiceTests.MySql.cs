@@ -10,6 +10,7 @@ using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using MySql.Data.MySqlClient;
 using System;
 using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
@@ -19,22 +20,14 @@ namespace EFxceptions.Identity.Tests
 {
     public partial class EFxceptionServiceTests
     {
-        private readonly Mock<ISqlErrorBroker> sqlErrorBrokerMock;
-        private readonly IEFxceptionService efxceptionService;
-
-        public EFxceptionServiceTests()
-        {
-            this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
-            this.efxceptionService = new EFxceptionService(this.sqlErrorBrokerMock.Object);
-        }
-
+       
         [Fact]
-        public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
+        public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized_MySql()
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 0000;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException foreignKeyConstraintConflictException = CreateSqlException();
+            MySqlException foreignKeyConstraintConflictException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -50,12 +43,12 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowInvalidColumnNameException()
+        public void ShouldThrowInvalidColumnNameException_MySql()
         {
             // given
             int sqlInvalidColumnNameErrorCode = 207;
             string randomErrorMessage = CreateRandomErrorMessage();
-            SqlException invalidColumnNameException = CreateSqlException();
+            MySqlException invalidColumnNameException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -71,12 +64,12 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowInvalidObjectNameException()
+        public void ShouldThrowInvalidObjectNameException_MySql()
         {
             // given
             int sqlInvalidObjectNameErrorCode = 208;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException invalidObjectNameException = CreateSqlException();
+            MySqlException invalidObjectNameException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -92,12 +85,12 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowForeignKeyConstraintConflictException()
+        public void ShouldThrowForeignKeyConstraintConflictException_MySql()
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 547;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException foreignKeyConstraintConflictException = CreateSqlException();
+            MySqlException foreignKeyConstraintConflictException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -113,19 +106,19 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowDuplicateKeyWithUniqueIndexException()
+        public void ShouldThrowDuplicateKeyWithUniqueIndexException_MySql()
         {
             // given
             int sqlDuplicateKeyErrorCode = 2601;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException duplicateKeySqlException = CreateSqlException();
+            MySqlException duplicateKeyMySqlException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqlException);
+                innerException: duplicateKeyMySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetErrorCode(duplicateKeySqlException))
+                broker.GetErrorCode(duplicateKeyMySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -134,19 +127,19 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowDuplicateKeyException()
+        public void ShouldThrowDuplicateKeyException_MySql()
         {
             // given
             int sqlDuplicateKeyErrorCode = 2627;
             string randomErrorMessage = new MnemonicString().GetValue();
-            SqlException duplicateKeySqlException = CreateSqlException();
+            MySqlException duplicateKeyMySqlException = CreateMySqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqlException);
+                innerException: duplicateKeyMySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetErrorCode(duplicateKeySqlException))
+                broker.GetErrorCode(duplicateKeyMySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -155,7 +148,7 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
-        public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
+        public void ShouldThrowDbUpdateExceptionIfMySqlExceptionWasNull_MySql()
         {
             // given
             var dbUpdateException = new DbUpdateException(null, default(Exception));
@@ -165,13 +158,12 @@ namespace EFxceptions.Identity.Tests
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
 
             this.sqlErrorBrokerMock.Verify(broker =>
-                broker.GetErrorCode(It.IsAny<SqlException>()),
+                broker.GetErrorCode(It.IsAny<MySqlException>()),
                     Times.Never);
         }
 
-        private SqlException CreateSqlException() =>
-            FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
-
-        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
+        private MySqlException CreateMySqlException() =>
+            FormatterServices.GetUninitializedObject(typeof(MySqlException)) as MySqlException;
+         
     }
 }

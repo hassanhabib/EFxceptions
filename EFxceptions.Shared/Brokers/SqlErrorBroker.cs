@@ -5,11 +5,22 @@
 // ---------------------------------------------------------------
 
 using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using System.Data.Common;
 
 namespace EFxceptions.Brokers
 {
     public class SqlErrorBroker : ISqlErrorBroker
     {
-        public int GetSqlErrorCode(SqlException sqlException) => sqlException.Number;
+        public int GetErrorCode(DbException exception)
+        {
+            if (exception is MySqlException mySqlException)
+            {
+                return mySqlException.Number;
+            }
+
+            return ((SqlException)exception).Number;
+        }
+
     }
 }

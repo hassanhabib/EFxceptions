@@ -4,20 +4,20 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-using System.Runtime.Serialization;
 using EFxceptions.Brokers;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using System;
+using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
 using Xunit;
 
 namespace EFxceptions.Tests.Services
 {
-    public class EFxceptionServiceTests
+    public partial class EFxceptionServiceTests
     {
         private readonly Mock<ISqlErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
@@ -41,7 +41,7 @@ namespace EFxceptions.Tests.Services
                 innerException: foreignKeyConstraintConflictException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                broker.GetErrorCode(foreignKeyConstraintConflictException))
                     .Returns(sqlForeignKeyConstraintConflictErrorCode);
 
             // when . then
@@ -62,7 +62,7 @@ namespace EFxceptions.Tests.Services
                 innerException: invalidColumnNameException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(invalidColumnNameException))
+                broker.GetErrorCode(invalidColumnNameException))
                     .Returns(sqlInvalidColumnNameErrorCode);
 
             // when . then
@@ -83,7 +83,7 @@ namespace EFxceptions.Tests.Services
                 innerException: invalidObjectNameException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(invalidObjectNameException))
+                broker.GetErrorCode(invalidObjectNameException))
                     .Returns(sqlInvalidObjectNameErrorCode);
 
             // when . then
@@ -104,7 +104,7 @@ namespace EFxceptions.Tests.Services
                 innerException: foreignKeyConstraintConflictException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                broker.GetErrorCode(foreignKeyConstraintConflictException))
                     .Returns(sqlForeignKeyConstraintConflictErrorCode);
 
             // when . then
@@ -125,7 +125,7 @@ namespace EFxceptions.Tests.Services
                 innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(duplicateKeySqlException))
+                broker.GetErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -146,7 +146,7 @@ namespace EFxceptions.Tests.Services
                 innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(duplicateKeySqlException))
+                broker.GetErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -165,7 +165,7 @@ namespace EFxceptions.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
 
             this.sqlErrorBrokerMock.Verify(broker =>
-                broker.GetSqlErrorCode(It.IsAny<SqlException>()),
+                broker.GetErrorCode(It.IsAny<SqlException>()),
                     Times.Never);
         }
 

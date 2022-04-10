@@ -4,10 +4,12 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
 using EFxceptions.Brokers;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
+using System;
+using System.Data.Common;
 
 namespace EFxceptions.Services
 {
@@ -21,13 +23,26 @@ namespace EFxceptions.Services
         public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
             ValidateInnerException(dbUpdateException);
-            SqlException sqlException = GetSqlException(dbUpdateException.InnerException);
-            int sqlErrorCode = this.sqlErrorBroker.GetSqlErrorCode(sqlException);
-            ConvertAndThrowMeaningfulException(sqlErrorCode, sqlException.Message);
+            DbException dbException = GetDbException(dbUpdateException.InnerException);
+            int sqlErrorCode = this.sqlErrorBroker.GetErrorCode(dbException);
+            ConvertAndThrowMeaningfulException(sqlErrorCode, dbException.Message);
 
             throw dbUpdateException;
         }
 
-        private SqlException GetSqlException(Exception exception) => (SqlException)exception;
+        private DbException GetDbException(Exception exception)
+        {
+            if (exception is SqlException sqlException)
+            {
+                return sqlException;
+            }
+
+            if (exception is MySqlException mySqlException)
+            {
+                return mySqlException;
+            }
+
+            return (DbException)exception;
+        }
     }
 }

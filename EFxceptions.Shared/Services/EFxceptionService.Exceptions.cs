@@ -23,7 +23,7 @@ namespace EFxceptions.Services
                 case 2601:
                     throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
-                    throw new DuplicateKeyException(message); 
+                    throw new DuplicateKeyException(message);
             }
         }
     }
