@@ -5,6 +5,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using EFxceptions.SQLite.Brokers.DbErrors;
 using Microsoft.Data.Sqlite;
@@ -50,7 +51,31 @@ namespace EFxceptions.SQLite.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowInvalidColumnNameException()
+        {
+            // given
+            int sqlInvalidColumnNameErrorCode = 207;
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqliteException invalidColumnNameException = CreateSqliteException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidColumnNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidColumnNameException))
+                    .Returns(sqlInvalidColumnNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidColumnNameException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private SqliteException CreateSqliteException() =>
            FormatterServices.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
+
+        private string CreateRandomErrorMessage() => 
+            new MnemonicString().GetValue();
     }
 }
