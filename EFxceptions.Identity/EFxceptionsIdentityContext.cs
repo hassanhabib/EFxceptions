@@ -1,46 +1,45 @@
 ﻿// ---------------------------------------------------------------
-// Copyright (c) Hassan Habib, Alice Luo and Shimmy Weitzhandler All rights reserved.
+// Copyright (c) H. Habib, A. Luo, S. Weitzhandler & M. Mahdhi
+// All rights reserved.
 // Licensed under the MIT License.
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers;
+using EFxceptions.Brokers.DbErrors;
+using EFxceptions.Identity.Brokers.DbErrors;
+using EFxceptions.Identity.Core;
 using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace EFxceptions.Identity
 {
-    public class EFxceptionsIdentityContext<TUser> : IdentityDbContext<TUser, IdentityRole, string> where TUser : IdentityUser
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey>
+        : IdentityDbContextBase<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>,
+            IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>, SqlException>
+         where TUser : IdentityUser<TKey>
+         where TRole : IdentityRole<TKey>
+         where TKey : IEquatable<TKey>
     {
         protected EFxceptionsIdentityContext()
-        {
-        }
+        { }
 
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
-        {
-        }
+        public EFxceptionsIdentityContext(DbContextOptions options)
+            : base(options)
+        { }
+
+        protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
+            new SqlErrorBroker();
+
+        protected override IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<SqlException> errorBroker) =>
+                new EFxceptionService<SqlException>(errorBroker);
     }
 
-    public class EFxceptionsIdentityContext<TUser, TRole, TKey> : EFxceptionsIdentityContext<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>, IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>>
-        where TUser : IdentityUser<TKey>
-        where TRole : IdentityRole<TKey>
-        where TKey : IEquatable<TKey>
-    {
-        protected EFxceptionsIdentityContext()
-        {
-        }
-
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
-        {
-        }
-    }
-
-    public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
+    public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
+        : IdentityDbContextBase<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, SqlException>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TKey : IEquatable<TKey>
@@ -50,77 +49,11 @@ namespace EFxceptions.Identity
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
-        private IEFxceptionService eFxceptionService;
-        private ISqlErrorBroker sqlErrorBroker;
+        protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
+            new SqlErrorBroker();
 
-        protected EFxceptionsIdentityContext() =>
-            InitializeInternalServices();
-
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options) =>
-            InitializeInternalServices();
-
-        private void InitializeInternalServices()
-        {
-            this.sqlErrorBroker = new SqlErrorBroker();
-            this.eFxceptionService = new EFxceptionService(this.sqlErrorBroker);
-        }
-
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await base.SaveChangesAsync(cancellationToken);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override async Task<int> SaveChangesAsync(
-            bool acceptAllChangesOnSuccess,
-            CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override int SaveChanges()
-        {
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            try
-            {
-                return base.SaveChanges(acceptAllChangesOnSuccess);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
+        protected override IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<SqlException> errorBroker) =>
+                new EFxceptionService<SqlException>(errorBroker);
     }
 }
