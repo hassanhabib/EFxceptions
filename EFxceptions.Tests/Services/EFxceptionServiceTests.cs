@@ -5,6 +5,7 @@
 // ---------------------------------------------------------------
 
 using EFxceptions.Brokers;
+using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
@@ -25,7 +26,9 @@ namespace EFxceptions.Tests.Services
         public EFxceptionServiceTests()
         {
             this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
-            this.efxceptionService = new EFxceptionService(this.sqlErrorBrokerMock.Object);
+
+            this.efxceptionService = new EFxceptionService<SqlException>(
+                errorBroker: this.sqlErrorBrokerMock.Object);
         }
 
         [Fact]
