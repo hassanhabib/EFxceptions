@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlServer", "SqlServer", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.Core", "EFxceptions.Identity.Core\EFxceptions.Identity.Core.csproj", "{FD1B8966-225B-47F6-993B-3792762A756B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MySql", "MySql", "{2C89A614-93A5-4D72-B2ED-5E29C272198C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.MySql", "EFxceptions.MySql\EFxceptions.MySql.csproj", "{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{FD1B8966-225B-47F6-993B-3792762A756B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD1B8966-225B-47F6-993B-3792762A756B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD1B8966-225B-47F6-993B-3792762A756B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{82530154-333E-4493-A25B-77D731F5EE40} = {B1DA3B28-2892-4373-98A0-121FF86ACE34}
 		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7} = {E977EC5E-2E3D-497E-8EB1-117B7384950C}
 		{FD1B8966-225B-47F6-993B-3792762A756B} = {E977EC5E-2E3D-497E-8EB1-117B7384950C}
+		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE} = {2C89A614-93A5-4D72-B2ED-5E29C272198C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
