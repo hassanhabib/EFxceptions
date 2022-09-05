@@ -12,6 +12,7 @@ using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace EFxceptions.Identity.MySql
 {
