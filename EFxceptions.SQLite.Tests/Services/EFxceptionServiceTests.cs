@@ -175,7 +175,7 @@ namespace EFxceptions.SQLite.Tests.Services
         private SqliteException CreateSqliteException() =>
            FormatterServices.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
 
-        private string CreateRandomErrorMessage() => 
+        private string CreateRandomErrorMessage() =>
             new MnemonicString().GetValue();
     }
 }

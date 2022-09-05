@@ -7,11 +7,6 @@
 
 using EFxceptions.Brokers.DbErrors;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EFxceptions.Identity.MySql.Brokers.DbErrors
 {
