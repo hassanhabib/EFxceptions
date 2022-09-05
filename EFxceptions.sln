@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.SQLite", "EFxce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.SQLite.Tests", "EFxceptions.SQLite.Tests\EFxceptions.SQLite.Tests.csproj", "{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.SQLite", "EFxceptions.Identity.SQLite\EFxceptions.Identity.SQLite.csproj", "{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{9A1E76A0-4072-4731-9753-5DA751AF1B2C} = {2C89A614-93A5-4D72-B2ED-5E29C272198C}
 		{3F20A60E-30BA-4EE4-94F6-A21A7208ABE0} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 		{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
+		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
