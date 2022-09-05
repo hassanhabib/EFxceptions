@@ -8,7 +8,7 @@ using EFxceptions.Models.Exceptions;
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService
+    public partial class EFxceptionService<TDbException>
     {
         private void ConvertAndThrowMeaningfulException(int code, string message)
         {
