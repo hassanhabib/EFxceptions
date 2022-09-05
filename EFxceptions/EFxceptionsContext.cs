@@ -4,87 +4,23 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers;
+using EFxceptions.Brokers.DbErrors;
+using EFxceptions.Core;
 using EFxceptions.Services;
-using Microsoft.EntityFrameworkCore;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace EFxceptions
 {
-    public class EFxceptionsContext : DbContext
+    public class EFxceptionsContext : DbContextBase<SqlException>
     {
-        private IEFxceptionService eFxceptionService;
-        private ISqlErrorBroker sqlErrorBroker;
-
-        protected EFxceptionsContext() =>
-            InitializeInternalServices();
-
-        public EFxceptionsContext(DbContextOptions options) : base(options) =>
-            InitializeInternalServices();
-
-        private void InitializeInternalServices()
+        protected override IDbErrorBroker<SqlException> CreateErrorBroker()
         {
-            this.sqlErrorBroker = new SqlErrorBroker();
-            this.eFxceptionService = new EFxceptionService(this.sqlErrorBroker);
+            return new SqlErrorBroker();
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        protected override IEFxceptionService CreateEFxceptionService(IDbErrorBroker<SqlException> errorBroker)
         {
-            try
-            {
-                return await base.SaveChangesAsync(cancellationToken);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override async Task<int> SaveChangesAsync(
-            bool acceptAllChangesOnSuccess,
-            CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override int SaveChanges()
-        {
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            try
-            {
-                return base.SaveChanges(acceptAllChangesOnSuccess);
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
-
-                throw;
-            }
+            return new EFxceptionService<SqlException>(errorBroker);
         }
     }
 }

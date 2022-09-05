@@ -37,6 +37,8 @@
     </None>
   </ItemGroup>
 
-  <Import Project="..\EFxceptions.Shared\EFxceptions.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\EFxceptions.Core\EFxceptions.Core.csproj" />
+  </ItemGroup>
 
 </Project>
