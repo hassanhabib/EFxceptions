@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E977EC5E-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Core", "EFxceptions.Core\EFxceptions.Core.csproj", "{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlServer", "SqlServer", "{B1DA3B28-2892-4373-98A0-121FF86ACE34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D} = {B1DA3B28-2892-4373-98A0-121FF86ACE34}
+		{DBA43C86-63DE-488D-9DBB-D7D85F66C5C1} = {B1DA3B28-2892-4373-98A0-121FF86ACE34}
 		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7} = {E977EC5E-2E3D-497E-8EB1-117B7384950C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
