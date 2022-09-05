@@ -4,7 +4,6 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers;
 using EFxceptions.Identity.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
