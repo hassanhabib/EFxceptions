@@ -9,6 +9,8 @@ using EFxceptions.Services;
 using EFxceptions.Brokers.DbErrors;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace EFxceptions.Core
 {
@@ -34,5 +36,62 @@ namespace EFxceptions.Core
         protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
         protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
 
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await base.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
+
+                throw;
+            }
+        }
+
+        public override async Task<int> SaveChangesAsync(
+            bool acceptAllChangesOnSuccess,
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
+
+                throw;
+            }
+        }
+
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
+
+                throw;
+            }
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            try
+            {
+                return base.SaveChanges(acceptAllChangesOnSuccess);
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
+
+                throw;
+            }
+        }
     }
 }
