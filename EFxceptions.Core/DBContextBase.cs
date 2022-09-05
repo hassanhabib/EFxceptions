@@ -14,17 +14,17 @@ using System.Threading.Tasks;
 
 namespace EFxceptions.Core
 {
-    public abstract class DBContextBase<TDbException> : DbContext
+    public abstract class DbContextBase<TDbException> : DbContext
         where TDbException : DbException
     {
         private IEFxceptionService eFxceptionService;
         private IDbErrorBroker<TDbException> errorBroker;
 
-        protected DBContextBase()
+        protected DbContextBase()
            => InitializeInternalServices();
 
 
-        public DBContextBase(DbContextOptions options) : base(options) =>
+        public DbContextBase(DbContextOptions options) : base(options) =>
             InitializeInternalServices();
 
         private void InitializeInternalServices()
