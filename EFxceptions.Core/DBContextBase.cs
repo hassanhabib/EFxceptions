@@ -5,12 +5,12 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Services;
 using EFxceptions.Brokers.DbErrors;
+using EFxceptions.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace EFxceptions.Core
 {
@@ -34,9 +34,11 @@ namespace EFxceptions.Core
         }
 
         protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
-        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
+        protected abstract IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<TDbException> errorBroker);
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override async Task<int> SaveChangesAsync(
+            CancellationToken cancellationToken = default)
         {
             try
             {
@@ -44,7 +46,8 @@ namespace EFxceptions.Core
             }
             catch (DbUpdateException dbUpdateException)
             {
-                this.eFxceptionService.ThrowMeaningfulException(dbUpdateException);
+                this.eFxceptionService.ThrowMeaningfulException(
+                    dbUpdateException);
 
                 throw;
             }
@@ -80,7 +83,8 @@ namespace EFxceptions.Core
             }
         }
 
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        public override int SaveChanges(
+            bool acceptAllChangesOnSuccess)
         {
             try
             {
