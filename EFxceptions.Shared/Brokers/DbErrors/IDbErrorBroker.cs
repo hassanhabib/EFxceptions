@@ -6,7 +6,7 @@
 
 using System.Data.Common;
 
-namespace EFxceptions.Shared.Brokers.DbErrors
+namespace EFxceptions.Brokers.DbErrors
 {
     public interface IDbErrorBroker<TException> where TException : DbException
     {
