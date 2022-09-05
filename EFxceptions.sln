@@ -13,14 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.Identity", "EFx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.Identity.Tests", "EFxceptions.Identity.Tests\EFxceptions.Identity.Tests.csproj", "{82530154-333E-4493-A25B-77D731F5EE40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Infrastructure.Build", "EFxceptions.Infrastructure.Build\EFxceptions.Infrastructure.Build.csproj", "{3BEB6B64-1F75-4B5E-887D-B8D37851CE0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.Infrastructure.Build", "EFxceptions.Infrastructure.Build\EFxceptions.Infrastructure.Build.csproj", "{3BEB6B64-1F75-4B5E-887D-B8D37851CE0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E977EC5E-2E3D-497E-8EB1-117B7384950C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Core", "EFxceptions.Core\EFxceptions.Core.csproj", "{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		EFxceptions.Shared\EFxceptions.Shared.projitems*{8419c4d3-6780-422e-a640-1b66df7b2cce}*SharedItemsImports = 5
-		EFxceptions.Shared\EFxceptions.Shared.projitems*{a379f3e6-af92-4eb6-ba07-fe188df0ae2d}*SharedItemsImports = 5
-		EFxceptions.Shared\EFxceptions.Shared.projitems*{c2a76918-4eca-4778-b4c7-3065c5ec149c}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -46,11 +45,23 @@ Global
 		{3BEB6B64-1F75-4B5E-887D-B8D37851CE0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BEB6B64-1F75-4B5E-887D-B8D37851CE0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BEB6B64-1F75-4B5E-887D-B8D37851CE0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7DB91AF-3FF7-4108-8885-9E4DE82E79F7} = {E977EC5E-2E3D-497E-8EB1-117B7384950C}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{8419c4d3-6780-422e-a640-1b66df7b2cce}*SharedItemsImports = 5
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{a379f3e6-af92-4eb6-ba07-fe188df0ae2d}*SharedItemsImports = 5
+		EFxceptions.Shared\EFxceptions.Shared.projitems*{c2a76918-4eca-4778-b4c7-3065c5ec149c}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
