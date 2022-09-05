@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.MySql", "EFxcep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.MySql.Tests", "EFxceptions.MySql.Tests\EFxceptions.MySql.Tests.csproj", "{99CE86A9-0ABE-4C25-BBFD-81FDEF720CBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.MySql", "EFxceptions.Identity.MySql\EFxceptions.Identity.MySql.csproj", "{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{99CE86A9-0ABE-4C25-BBFD-81FDEF720CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CE86A9-0ABE-4C25-BBFD-81FDEF720CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CE86A9-0ABE-4C25-BBFD-81FDEF720CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{FD1B8966-225B-47F6-993B-3792762A756B} = {E977EC5E-2E3D-497E-8EB1-117B7384950C}
 		{9DE00159-600A-4A60-9F14-1EE4A9CEE0CE} = {2C89A614-93A5-4D72-B2ED-5E29C272198C}
 		{99CE86A9-0ABE-4C25-BBFD-81FDEF720CBB} = {2C89A614-93A5-4D72-B2ED-5E29C272198C}
+		{2E67BE04-0A46-4B57-BB5F-B61C8F4D6DAD} = {2C89A614-93A5-4D72-B2ED-5E29C272198C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
