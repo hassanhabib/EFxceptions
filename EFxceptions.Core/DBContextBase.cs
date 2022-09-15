@@ -5,12 +5,12 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers.DbErrors;
-using EFxceptions.Services;
-using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using System.Threading;
 using System.Threading.Tasks;
+using EFxceptions.Brokers.DbErrors;
+using EFxceptions.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Core
 {
@@ -20,9 +20,8 @@ namespace EFxceptions.Core
         private IEFxceptionService eFxceptionService;
         private IDbErrorBroker<TDbException> errorBroker;
 
-        protected DbContextBase()
-           => InitializeInternalServices();
-
+        protected DbContextBase() =>
+            InitializeInternalServices();
 
         public DbContextBase(DbContextOptions options) : base(options) =>
             InitializeInternalServices();

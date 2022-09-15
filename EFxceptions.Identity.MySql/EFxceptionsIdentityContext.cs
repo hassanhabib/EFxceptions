@@ -5,6 +5,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Identity.Core;
 using EFxceptions.Identity.MySql.Brokers.DbErrors;
@@ -12,7 +13,6 @@ using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using System;
 
 namespace EFxceptions.Identity.MySql
 {
@@ -23,14 +23,14 @@ namespace EFxceptions.Identity.MySql
        where TRole : IdentityRole<TKey>
        where TKey : IEquatable<TKey>
     {
-        protected EFxceptionsIdentityContext()
-        { }
-
         public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         { }
 
+        protected EFxceptionsIdentityContext()
+        { }
+
         protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
-             new MySqlErrorBroker();
+            new MySqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
             IDbErrorBroker<MySqlException> errorBroker) =>

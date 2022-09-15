@@ -5,6 +5,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Identity.Brokers.DbErrors;
 using EFxceptions.Identity.Core;
@@ -12,7 +13,6 @@ using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace EFxceptions.Identity
 {

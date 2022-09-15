@@ -5,15 +5,15 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
+using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Data.Common;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace EFxceptions.Identity.Core
 {
@@ -42,7 +42,8 @@ namespace EFxceptions.Identity.Core
         { }
     }
 
-    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, TDbException> : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
+    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken, TDbException>
+        : IdentityDbContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
         where TUser : IdentityUser<TKey>
         where TRole : IdentityRole<TKey>
         where TKey : IEquatable<TKey>
@@ -61,15 +62,6 @@ namespace EFxceptions.Identity.Core
 
         public IdentityDbContextBase(DbContextOptions options) : base(options) =>
             InitializeInternalServices();
-
-        private void InitializeInternalServices()
-        {
-            this.errorBroker = CreateErrorBroker();
-            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
-        }
-
-        protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
-        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -127,6 +119,16 @@ namespace EFxceptions.Identity.Core
 
                 throw;
             }
+        }
+
+        protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
+
+        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
+
+        private void InitializeInternalServices()
+        {
+            this.errorBroker = CreateErrorBroker();
+            this.eFxceptionService = CreateEFxceptionService(this.errorBroker);
         }
     }
 }

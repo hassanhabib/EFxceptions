@@ -11,6 +11,5 @@ using MySql.Data.MySqlClient;
 namespace EFxceptions.Identity.MySql.Brokers.DbErrors
 {
     public interface IMySqlErrorBroker : IDbErrorBroker<MySqlException>
-    {
-    }
+    { }
 }

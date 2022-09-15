@@ -5,14 +5,14 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
+using System.Runtime.Serialization;
 using EFxceptions.Identity.MySql.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using MySql.Data.MySqlClient;
-using System;
-using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
 using Xunit;
 

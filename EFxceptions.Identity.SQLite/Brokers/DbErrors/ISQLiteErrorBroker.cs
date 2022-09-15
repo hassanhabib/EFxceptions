@@ -11,6 +11,5 @@ using Microsoft.Data.Sqlite;
 namespace EFxceptions.Identity.SQLite.Brokers.DbErrors
 {
     public interface ISQLiteErrorBroker : IDbErrorBroker<SqliteException>
-    {
-    }
+    { }
 }

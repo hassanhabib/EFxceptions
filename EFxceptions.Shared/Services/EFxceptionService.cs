@@ -4,10 +4,10 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers.DbErrors;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.Common;
+using EFxceptions.Brokers.DbErrors;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
 {

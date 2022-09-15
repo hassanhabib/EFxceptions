@@ -5,6 +5,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Identity.Core;
 using EFxceptions.Identity.SQLite.Brokers.DbErrors;
@@ -12,7 +13,6 @@ using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace EFxceptions.Identity.SQLite
 {
