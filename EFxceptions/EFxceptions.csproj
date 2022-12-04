@@ -1,7 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Version>0.4.4</Version>
     <Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
     <Copyright>Copyright (c) Hassan Habib, Alice Luo and Shimmy Weitzhandler  All rights reserved.</Copyright>
@@ -20,23 +19,19 @@
     <AssemblyVersion>0.4.4.0</AssemblyVersion>
     <FileVersion>0.4.4.0</FileVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0"/>
   </ItemGroup>
-
   <ItemGroup>
     <None Include="..\EFxceptions.Shared\License.txt">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath/>
     </None>
     <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath/>
     </None>
   </ItemGroup>
-
-  <Import Project="..\EFxceptions.Shared\EFxceptions.Shared.projitems" Label="Shared" />
-
+  <Import Project="..\EFxceptions.Shared\EFxceptions.Shared.projitems" Label="Shared"/>
 </Project>
