@@ -8,7 +8,7 @@ using EFxceptions.Models.Exceptions;
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService
+    public partial class EFxceptionService<TDbException>
     {
         private void ConvertAndThrowMeaningfulException(int code, string message)
         {
@@ -23,7 +23,7 @@ namespace EFxceptions.Services
                 case 2601:
                     throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
-                    throw new DuplicateKeyException(message); 
+                    throw new DuplicateKeyException(message);
             }
         }
     }

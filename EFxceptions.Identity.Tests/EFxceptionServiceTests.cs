@@ -6,7 +6,7 @@
 
 using System;
 using System.Runtime.Serialization;
-using EFxceptions.Brokers;
+using EFxceptions.Identity.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
@@ -22,10 +22,13 @@ namespace EFxceptions.Identity.Tests
         private readonly Mock<ISqlErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
 
+
         public EFxceptionServiceTests()
         {
             this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
-            this.efxceptionService = new EFxceptionService(this.sqlErrorBrokerMock.Object);
+
+            this.efxceptionService = new EFxceptionService<SqlException>(
+                this.sqlErrorBrokerMock.Object);
         }
 
         [Fact]
