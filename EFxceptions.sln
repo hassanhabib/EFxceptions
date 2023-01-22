@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.Identity.SQLite
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostgreSQL", "PostgreSQL", "{C684D88F-A3D2-48B0-9DF3-4B89C6E85E6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.PosgreSQL", "EFxceptions.Posgres\EFxceptions.PosgreSQL.csproj", "{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions.PosgreSQL", "EFxceptions.Posgres\EFxceptions.PosgreSQL.csproj", "{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.PosgreSQL.Tests", "EFxceptions.PosgreSQL.Tests\EFxceptions.PosgreSQL.Tests.csproj", "{B65924F2-5B44-45EE-AE22-ED9F63F263CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B65924F2-5B44-45EE-AE22-ED9F63F263CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B65924F2-5B44-45EE-AE22-ED9F63F263CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B65924F2-5B44-45EE-AE22-ED9F63F263CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B65924F2-5B44-45EE-AE22-ED9F63F263CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +143,7 @@ Global
 		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 		{3FF9635F-353F-4383-8C95-F41ADB90C405} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 		{07E8ED1B-FEAA-4634-BEE2-6AE0B8E6DAE9} = {C684D88F-A3D2-48B0-9DF3-4B89C6E85E6A}
+		{B65924F2-5B44-45EE-AE22-ED9F63F263CF} = {C684D88F-A3D2-48B0-9DF3-4B89C6E85E6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}
