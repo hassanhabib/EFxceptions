@@ -112,6 +112,27 @@ namespace EFxceptions.PosgreSQL.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowDuplicateKeyWithUniqueIndexException()
+        {
+            // given
+            int sqlDuplicateKeyErrorCode = 2601;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            PostgresException duplicateKeyPostgreSqlException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: duplicateKeyPostgreSqlException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(duplicateKeyPostgreSqlException))
+                    .Returns(sqlDuplicateKeyErrorCode);
+
+            // when . then
+            Assert.Throws<DuplicateKeyWithUniqueIndexException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private PostgresException CreatePostgresException() =>
             FormatterServices.GetSafeUninitializedObject(typeof(PostgresException)) as PostgresException;
 
