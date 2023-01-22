@@ -91,6 +91,27 @@ namespace EFxceptions.PosgreSQL.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowForeignKeyConstraintConflictException()
+        {
+            // given
+            int sqlForeignKeyConstraintConflictErrorCode = 547;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            PostgresException foreignKeyConstraintConflictException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: foreignKeyConstraintConflictException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                    .Returns(sqlForeignKeyConstraintConflictErrorCode);
+
+            // when . then
+            Assert.Throws<ForeignKeyConstraintConflictException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private PostgresException CreatePostgresException() =>
             FormatterServices.GetSafeUninitializedObject(typeof(PostgresException)) as PostgresException;
 
