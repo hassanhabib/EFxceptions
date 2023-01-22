@@ -70,6 +70,27 @@ namespace EFxceptions.PosgreSQL.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowInvalidObjectNameException()
+        {
+            // given
+            int sqlInvalidObjectNameErrorCode = 208;
+            string randomErrorMessage = new MnemonicString().GetValue();
+            PostgresException invalidObjectNameException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidObjectNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidObjectNameException))
+                    .Returns(sqlInvalidObjectNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidObjectNameException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private PostgresException CreatePostgresException() =>
             FormatterServices.GetSafeUninitializedObject(typeof(PostgresException)) as PostgresException;
 
