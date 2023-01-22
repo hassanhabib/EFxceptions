@@ -5,6 +5,7 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
+using System;
 using System.Runtime.Serialization;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.PosgreSQL.Brokers;
@@ -152,6 +153,21 @@ namespace EFxceptions.PosgreSQL.Tests.Services
             // when . then
             Assert.Throws<DuplicateKeyException>(() =>
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
+        public void ShouldThrowDbUpdateExceptionIfPostgreSqlExceptionWasNull()
+        {
+            // given
+            var dbUpdateException = new DbUpdateException(null, default(Exception));
+
+            // when . then
+            Assert.Throws<DbUpdateException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+
+            this.sqlErrorBrokerMock.Verify(broker =>
+                broker.GetSqlErrorCode(It.IsAny<PostgresException>()),
+                    Times.Never);
         }
 
         private PostgresException CreatePostgresException() =>
