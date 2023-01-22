@@ -6,6 +6,7 @@
 // ---------------------------------------------------------------
 
 using System.Runtime.Serialization;
+using EFxceptions.Models.Exceptions;
 using EFxceptions.PosgreSQL.Brokers;
 using EFxceptions.Services;
 using Microsoft.EntityFrameworkCore;
@@ -48,8 +49,30 @@ namespace EFxceptions.PosgreSQL.Tests.Services
            this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowInvalidColumnNameException()
+        {
+            // given
+            int sqlInvalidColumnNameErrorCode = 207;
+            string randomErrorMessage = CreateRandomErrorMessage();
+            PostgresException invalidColumnNameException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: invalidColumnNameException);
+
+            this.sqlErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidColumnNameException))
+                    .Returns(sqlInvalidColumnNameErrorCode);
+
+            // when . then
+            Assert.Throws<InvalidColumnNameException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private PostgresException CreatePostgresException() =>
             FormatterServices.GetSafeUninitializedObject(typeof(PostgresException)) as PostgresException;
 
+        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
 }
