@@ -18,6 +18,8 @@ namespace EFxceptions.PostgreSQL.Services
             {
                case PostgresErrorCodes.ForeignKeyViolation :
                     throw new ForeignKeyConstraintConflictException(message);
+                case PostgresErrorCodes.UniqueViolation:
+                    throw new DuplicateKeyWithUniqueIndexException(message);
             }
         }
     }
