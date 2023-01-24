@@ -13,14 +13,14 @@ using MySql.Data.MySqlClient;
 
 namespace EFxceptions.MySql
 {
-    public class EFxceptionsContext : DbContextBase<MySqlException>
+    public class EFxceptionsContext : DbContextBase<MySqlException, int>
     {
-        protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<MySqlException , int> CreateErrorBroker() =>
             new MySqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<MySqlException> errorBroker) =>
-                new EFxceptionService<MySqlException>(errorBroker);
+            IDbErrorBroker<MySqlException, int> errorBroker) =>
+                new EFxceptionService<MySqlException, int>(errorBroker);
 
     }
 }

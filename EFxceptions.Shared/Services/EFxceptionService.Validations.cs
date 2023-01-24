@@ -2,9 +2,9 @@
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService<TDbException>
+    public partial class EFxceptionService<TDbException, TCode>
     {
-        private void ValidateInnerException(DbUpdateException dbUpdateException)
+        protected void ValidateInnerException(DbUpdateException dbUpdateException)
         {
             if (dbUpdateException.InnerException == null)
             {

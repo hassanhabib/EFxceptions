@@ -10,6 +10,6 @@ using Microsoft.Data.SqlClient;
 
 namespace EFxceptions.Identity.Brokers.DbErrors
 {
-    public interface ISqlErrorBroker : IDbErrorBroker<SqlException>
+    public interface ISqlErrorBroker : IDbErrorBroker<SqlException, int>
     { }
 }

@@ -8,8 +8,8 @@ using System.Data.Common;
 
 namespace EFxceptions.Brokers.DbErrors
 {
-    public interface IDbErrorBroker<TException> where TException : DbException
+    public interface IDbErrorBroker<TException, TCode> where TException : DbException
     {
-        int GetSqlErrorCode(TException exception);
+        TCode GetSqlErrorCode(TException exception);
     }
 }

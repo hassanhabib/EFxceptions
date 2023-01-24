@@ -13,13 +13,13 @@ using Microsoft.Data.Sqlite;
 
 namespace EFxceptions.SQLite
 {
-    public class EFxceptionsContext : DbContextBase<SqliteException>
+    public class EFxceptionsContext : DbContextBase<SqliteException, int>
     {
-        protected override IDbErrorBroker<SqliteException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<SqliteException, int> CreateErrorBroker() =>
             new SQLiteErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqliteException> errorBroker) =>
-                new EFxceptionService<SqliteException>(errorBroker);
+            IDbErrorBroker<SqliteException, int> errorBroker) =>
+                new EFxceptionService<SqliteException, int>(errorBroker);
     }
 }

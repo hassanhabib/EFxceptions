@@ -29,12 +29,12 @@ namespace EFxceptions.Identity.SQLite
         public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         { }
 
-        protected override IDbErrorBroker<SqliteException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<SqliteException, int> CreateErrorBroker() =>
              new SQLiteErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqliteException> errorBroker) =>
-                new EFxceptionService<SqliteException>(errorBroker);
+            IDbErrorBroker<SqliteException, int> errorBroker) =>
+                new EFxceptionService<SqliteException, int>(errorBroker);
     }
 
     public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
@@ -48,11 +48,11 @@ namespace EFxceptions.Identity.SQLite
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
-        protected override IDbErrorBroker<SqliteException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<SqliteException, int> CreateErrorBroker() =>
             new SQLiteErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqliteException> errorBroker) =>
-                new EFxceptionService<SqliteException>(errorBroker);
+            IDbErrorBroker<SqliteException, int> errorBroker) =>
+                new EFxceptionService<SqliteException, int>(errorBroker);
     }
 }

@@ -11,16 +11,12 @@ using Microsoft.Data.SqlClient;
 
 namespace EFxceptions
 {
-    public class EFxceptionsContext : DbContextBase<SqlException>
+    public class EFxceptionsContext : DbContextBase<SqlException, int>
     {
-        protected override IDbErrorBroker<SqlException> CreateErrorBroker()
-        {
-            return new SqlErrorBroker();
-        }
+        protected override IDbErrorBroker<SqlException, int> CreateErrorBroker() =>
+             new SqlErrorBroker();
 
-        protected override IEFxceptionService CreateEFxceptionService(IDbErrorBroker<SqlException> errorBroker)
-        {
-            return new EFxceptionService<SqlException>(errorBroker);
-        }
+        protected override IEFxceptionService CreateEFxceptionService(IDbErrorBroker<SqlException, int> errorBroker) =>
+            new EFxceptionService<SqlException, int>(errorBroker);
     }
 }

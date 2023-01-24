@@ -27,7 +27,7 @@ namespace EFxceptions.Identity.Core
         { }
     }
 
-    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TDbException>
+    public abstract class IdentityDbContextBase<TUser, TRole, TKey, TDbException, TCode>
         : IdentityDbContextBase<TUser, TRole, TKey, IdentityUserClaim<TKey>, IdentityUserRole<TKey>,
             IdentityUserLogin<TKey>, IdentityRoleClaim<TKey>, IdentityUserToken<TKey>, TDbException>
         where TUser : IdentityUser<TKey>
@@ -55,7 +55,7 @@ namespace EFxceptions.Identity.Core
         where TDbException : DbException
     {
         private IEFxceptionService eFxceptionService;
-        private IDbErrorBroker<TDbException> errorBroker;
+        private IDbErrorBroker<TDbException, int> errorBroker;
 
         protected IdentityDbContextBase() =>
             InitializeInternalServices();
@@ -121,9 +121,9 @@ namespace EFxceptions.Identity.Core
             }
         }
 
-        protected abstract IDbErrorBroker<TDbException> CreateErrorBroker();
+        protected abstract IDbErrorBroker<TDbException, int> CreateErrorBroker();
 
-        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException> errorBroker);
+        protected abstract IEFxceptionService CreateEFxceptionService(IDbErrorBroker<TDbException, int> errorBroker);
 
         private void InitializeInternalServices()
         {

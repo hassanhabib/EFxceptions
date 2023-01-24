@@ -27,7 +27,7 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         {
             this.sqlErrorBrokerMock = new Mock<SQLiteErrorBroker>();
 
-            this.efxceptionService = new EFxceptionService<SqliteException>(
+            this.efxceptionService = new EFxceptionService<SqliteException, int>(
                errorBroker: this.sqlErrorBrokerMock.Object);
         }
 

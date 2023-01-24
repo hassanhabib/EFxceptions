@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace EFxceptions.MySql.Brokers.DbErrors
 {
-    public interface IMySqlErrorBroker : IDbErrorBroker<MySqlException>
+    public interface IMySqlErrorBroker : IDbErrorBroker<MySqlException, int>
     {
     }
 }

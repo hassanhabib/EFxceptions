@@ -11,19 +11,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService<TDbException> : IEFxceptionService
+    public partial class EFxceptionService<TDbException, TCode> : IEFxceptionService
         where TDbException : DbException
     {
-        private readonly IDbErrorBroker<TDbException> errorBroker;
+        protected readonly IDbErrorBroker<TDbException, TCode> errorBroker;
 
-        public EFxceptionService(IDbErrorBroker<TDbException> errorBroker) =>
+        public EFxceptionService(IDbErrorBroker<TDbException, TCode> errorBroker) =>
             this.errorBroker = errorBroker;
 
-        public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
+        public virtual void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
             ValidateInnerException(dbUpdateException);
             TDbException dbException = GetSqlException(dbUpdateException.InnerException);
-            int sqlErrorCode = this.errorBroker.GetSqlErrorCode(dbException);
+            TCode sqlErrorCode = this.errorBroker.GetSqlErrorCode(dbException);
             ConvertAndThrowMeaningfulException(sqlErrorCode, dbException.Message);
 
             throw dbUpdateException;

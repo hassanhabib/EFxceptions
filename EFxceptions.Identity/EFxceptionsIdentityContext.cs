@@ -30,12 +30,12 @@ namespace EFxceptions.Identity
             : base(options)
         { }
 
-        protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<SqlException, int> CreateErrorBroker() =>
             new SqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqlException> errorBroker) =>
-                new EFxceptionService<SqlException>(errorBroker);
+            IDbErrorBroker<SqlException, int> errorBroker) =>
+                new EFxceptionService<SqlException, int>(errorBroker);
     }
 
     public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
@@ -49,11 +49,11 @@ namespace EFxceptions.Identity
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
-        protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<SqlException, int> CreateErrorBroker() =>
             new SqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqlException> errorBroker) =>
-                new EFxceptionService<SqlException>(errorBroker);
+            IDbErrorBroker<SqlException, int> errorBroker) =>
+                new EFxceptionService<SqlException, int>(errorBroker);
     }
 }
