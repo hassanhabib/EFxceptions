@@ -56,7 +56,6 @@ namespace EFxceptions.PostgreSQL.Tests.Services
         public void ShouldThrowForeignKeyConstraintConflictException()
         {
             // given
-            string postgresForeignKeyConstraintConflictErrorCode = "23503";
             string randomErrorMessage = GetRandomMessage();
             PostgresException foreignKeyConstraintConflictException = CreatePostgresException();
 
@@ -66,7 +65,7 @@ namespace EFxceptions.PostgreSQL.Tests.Services
 
             this.postgreSQLErrorBrokerMock.Setup(broker =>
                 broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
-                    .Returns(postgresForeignKeyConstraintConflictErrorCode);
+                    .Returns(PostgresErrorCodes.ForeignKeyViolation);
 
             // when . then
             Assert.Throws<ForeignKeyConstraintConflictException>(() =>
