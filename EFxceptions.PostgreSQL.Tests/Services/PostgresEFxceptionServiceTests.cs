@@ -7,6 +7,7 @@
 
 using System;
 using System.Runtime.Serialization;
+using EFxceptions.Models.Exceptions;
 using EFxceptions.PostgreSQL.Brokers.DbErrors;
 using EFxceptions.PostgreSQL.Services;
 using Microsoft.EntityFrameworkCore;
@@ -50,6 +51,28 @@ namespace EFxceptions.PostgreSQL.Tests.Services
             Assert.Throws<DbUpdateException>(() =>
                 this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
+
+        [Fact]
+        public void ShouldThrowForeignKeyConstraintConflictException()
+        {
+            // given
+            string postgresForeignKeyConstraintConflictErrorCode = "23503";
+            string randomErrorMessage = GetRandomMessage();
+            PostgresException foreignKeyConstraintConflictException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: foreignKeyConstraintConflictException);
+
+            this.postgreSQLErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(foreignKeyConstraintConflictException))
+                    .Returns(postgresForeignKeyConstraintConflictErrorCode);
+
+            // when . then
+            Assert.Throws<ForeignKeyConstraintConflictException>(() =>
+                this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
 
         private PostgresException CreatePostgresException() =>
            FormatterServices.GetUninitializedObject(typeof(PostgresException)) as PostgresException;
