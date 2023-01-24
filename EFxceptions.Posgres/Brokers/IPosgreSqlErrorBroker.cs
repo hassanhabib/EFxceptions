@@ -10,6 +10,6 @@ using Npgsql;
 
 namespace EFxceptions.PosgreSQL.Brokers
 {
-    public interface IPosgreSqlErrorBroker : IDbErrorBroker<PostgresException>
+    public interface IPosgreSqlErrorBroker : IDbErrorBroker<PostgresException,string>
     { }
 }

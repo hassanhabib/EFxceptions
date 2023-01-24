@@ -8,6 +8,7 @@
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Core;
 using EFxceptions.PosgreSQL.Brokers;
+using EFxceptions.PosgreSQL.Services;
 using EFxceptions.Services;
 using Npgsql;
 
@@ -20,6 +21,6 @@ namespace EFxceptions.PosgreSQL
 
         protected override IEFxceptionService CreateEFxceptionService(
             IDbErrorBroker<PostgresException> errorBroker) =>
-                new EFxceptionService<PostgresException>(errorBroker);
+                new PostgresEFxceptionService(errorBroker);
     }
 }

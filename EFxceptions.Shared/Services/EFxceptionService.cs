@@ -19,7 +19,7 @@ namespace EFxceptions.Services
         public EFxceptionService(IDbErrorBroker<TDbException> errorBroker) =>
             this.errorBroker = errorBroker;
 
-        public void ThrowMeaningfulException(DbUpdateException dbUpdateException)
+        public virtual void ThrowMeaningfulException(DbUpdateException dbUpdateException)
         {
             ValidateInnerException(dbUpdateException);
             TDbException dbException = GetSqlException(dbUpdateException.InnerException);
@@ -29,6 +29,6 @@ namespace EFxceptions.Services
             throw dbUpdateException;
         }
 
-        private TDbException GetSqlException(Exception exception) => (TDbException)exception;
+        protected TDbException GetSqlException(Exception exception) => (TDbException)exception;
     }
 }

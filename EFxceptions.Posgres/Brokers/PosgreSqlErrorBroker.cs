@@ -11,6 +11,6 @@ namespace EFxceptions.PosgreSQL.Brokers
 {
     public class PosgreSqlErrorBroker : IPosgreSqlErrorBroker
     {
-        public int GetSqlErrorCode(PostgresException postgresException) => postgresException.ErrorCode;
+        public string GetSqlErrorCode(PostgresException postgresException) => postgresException.SqlState;
     }
 }
