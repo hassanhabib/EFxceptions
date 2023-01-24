@@ -24,7 +24,7 @@ namespace EFxceptions.PostgreSQL.Services
             string sqlErrorCode = this.errorBroker.GetSqlErrorCode(dbException);
             ConvertAndThrowMeaningfulException(sqlErrorCode, dbException.Message);
 
-            throw new System.NotImplementedException();
+            throw dbUpdateException;
         }
     }
 }
