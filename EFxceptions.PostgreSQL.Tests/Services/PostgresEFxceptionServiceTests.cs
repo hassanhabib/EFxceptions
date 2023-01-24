@@ -72,6 +72,25 @@ namespace EFxceptions.PostgreSQL.Tests.Services
                 this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowDuplicateKeyWithUniqueIndexException()
+        {
+            // given
+            string randomErrorMessage = new MnemonicString().GetValue();
+            PostgresException duplicateKeyPostgresException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: duplicateKeyPostgresException);
+
+            this.postgreSQLErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(duplicateKeyPostgresException))
+                    .Returns(PostgresErrorCodes.UniqueViolation);
+
+            // when . then
+            Assert.Throws<DuplicateKeyWithUniqueIndexException>(() =>
+                this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
 
         private PostgresException CreatePostgresException() =>
            FormatterServices.GetUninitializedObject(typeof(PostgresException)) as PostgresException;
