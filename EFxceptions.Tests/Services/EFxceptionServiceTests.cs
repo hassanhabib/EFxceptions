@@ -26,7 +26,7 @@ namespace EFxceptions.Tests.Services
         {
             this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
 
-            this.efxceptionService = new EFxceptionService<SqlException>(
+            this.efxceptionService = new EFxceptionService<SqlException, int>(
                 errorBroker: this.sqlErrorBrokerMock.Object);
         }
 
