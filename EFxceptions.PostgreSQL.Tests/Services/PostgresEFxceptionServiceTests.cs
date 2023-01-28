@@ -94,7 +94,7 @@ namespace EFxceptions.PostgreSQL.Tests.Services
         [Fact]
         public void ShouldThrowInvalidColumnNameException()
         {
-            //given
+            // given
             string randomeErorMessage = new MnemonicString().GetValue();
             PostgresException invalidColumnNameException = CreatePostgresException();
 
@@ -106,7 +106,7 @@ namespace EFxceptions.PostgreSQL.Tests.Services
                 broker.GetSqlErrorCode(invalidColumnNameException))
                 .Returns(PostgresErrorCodes.FdwInvalidColumnName);
 
-            //when. then
+            // when . then
             Assert.Throws<InvalidColumnNameException>(() =>
                 this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }

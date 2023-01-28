@@ -13,13 +13,15 @@ namespace EFxceptions.PostgreSQL.Services
     public partial class PostgresEFxceptionService
     {
         protected override void ConvertAndThrowMeaningfulException(string code, string message)
-        { 
+        {
             switch (code)
             {
-               case PostgresErrorCodes.ForeignKeyViolation :
+                case PostgresErrorCodes.ForeignKeyViolation:
                     throw new ForeignKeyConstraintConflictException(message);
                 case PostgresErrorCodes.UniqueViolation:
                     throw new DuplicateKeyWithUniqueIndexException(message);
+                case PostgresErrorCodes.FdwInvalidColumnName:
+                    throw new InvalidColumnNameException(message);
             }
         }
     }
