@@ -5,7 +5,6 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
 using System.Runtime.Serialization;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.PostgreSQL.Brokers.DbErrors;
@@ -92,8 +91,28 @@ namespace EFxceptions.PostgreSQL.Tests.Services
                 this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
+        [Fact]
+        public void ShouldThrowInvalidColumnNameException()
+        {
+            //given
+            string randomeErorMessage = new MnemonicString().GetValue();
+            PostgresException invalidColumnNameException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomeErorMessage,
+                innerException: invalidColumnNameException);
+
+            this.postgreSQLErrorBrokerMock.Setup(broker =>
+                broker.GetSqlErrorCode(invalidColumnNameException))
+                .Returns(PostgresErrorCodes.FdwInvalidColumnName);
+
+            //when. then
+            Assert.Throws<InvalidColumnNameException>(() =>
+                this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
         private PostgresException CreatePostgresException() =>
-           FormatterServices.GetUninitializedObject(typeof(PostgresException)) as PostgresException;
+       FormatterServices.GetUninitializedObject(typeof(PostgresException)) as PostgresException;
 
         private string GetRandomMessage() =>
             new MnemonicString().GetValue();
