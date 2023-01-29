@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EFxceptions.Shared.Models.Exceptions
+namespace EFxceptions.Models.Exceptions
 {
     public class UndefinedObjectException : Exception
     {

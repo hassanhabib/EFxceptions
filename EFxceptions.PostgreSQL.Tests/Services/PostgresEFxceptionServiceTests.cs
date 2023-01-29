@@ -9,7 +9,6 @@ using System.Runtime.Serialization;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.PostgreSQL.Brokers.DbErrors;
 using EFxceptions.PostgreSQL.Services;
-using EFxceptions.Shared.Models.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Npgsql;

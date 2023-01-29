@@ -22,6 +22,8 @@ namespace EFxceptions.PostgreSQL.Services
                     throw new DuplicateKeyWithUniqueIndexException(message);
                 case PostgresErrorCodes.FdwInvalidColumnName:
                     throw new InvalidColumnNameException(message);
+                case PostgresErrorCodes.UndefinedObject:
+                    throw new UndefinedObjectException(message);
             }
         }
     }
