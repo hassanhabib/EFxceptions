@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\ForeignKeyConstraintConflictException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidColumnNameException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidObjectNameException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\UndefinedObjectException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.Exceptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\EFxceptionService.Validations.cs" />

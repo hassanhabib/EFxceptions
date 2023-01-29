@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.PostgreSQL.Brokers.DbErrors;
 using EFxceptions.PostgreSQL.Services;
+using EFxceptions.Shared.Models.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Npgsql;
@@ -108,6 +109,26 @@ namespace EFxceptions.PostgreSQL.Tests.Services
 
             // when . then
             Assert.Throws<InvalidColumnNameException>(() =>
+                this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
+        public void ShouldThrowUndafinedObjectException()
+        {
+            // given
+            string randomeErrorMessage = new MnemonicString().GetValue();
+            PostgresException undefinedObjectException = CreatePostgresException();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomeErrorMessage,
+                innerException: undefinedObjectException);
+
+            this.postgreSQLErrorBrokerMock.Setup(broker =>
+            broker.GetSqlErrorCode(undefinedObjectException))
+                .Returns(PostgresErrorCodes.UndefinedObject);
+
+            // when . then
+            Assert.Throws<UndefinedObjectException>(() =>
                 this.postgresEFxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
