@@ -5,14 +5,14 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-using System.Runtime.Serialization;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using EFxceptions.SQLite.Brokers.DbErrors;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Moq;
+using System;
+using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
 using Xunit;
 

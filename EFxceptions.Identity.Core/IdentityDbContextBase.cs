@@ -5,15 +5,15 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
-using System.Data.Common;
-using System.Threading;
-using System.Threading.Tasks;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Data.Common;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EFxceptions.Identity.Core
 {

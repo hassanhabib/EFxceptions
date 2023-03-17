@@ -5,7 +5,6 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using System;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Identity.Core;
 using EFxceptions.Identity.MySql.Brokers.DbErrors;
@@ -13,6 +12,7 @@ using EFxceptions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace EFxceptions.Identity.MySql
 {
