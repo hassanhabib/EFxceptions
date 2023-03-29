@@ -6,10 +6,12 @@
 
 [![.NET](https://github.com/hassanhabib/EFxceptions/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hassanhabib/EFxceptions/actions/workflows/dotnet.yml)
 [![The Standard - COMPLIANT](https://img.shields.io/badge/The_Standard-COMPLIANT-2ea44f)](https://github.com/hassanhabib/The-Standard)
+[![The Standard Community](https://img.shields.io/discord/934130100008538142?color=%237289da&label=The%20Standard%20Community&logo=Discord)](https://discord.gg/vdPZ7hS52X)
 
 # EFxceptions
 
 [![preview version](https://img.shields.io/nuget/vpre/EFxceptions)](https://www.nuget.org/packages/EFxceptions/absoluteLatest)
+![Nuget](https://img.shields.io/nuget/dt/EFxceptions?color=blue&label=Downloads)
 
 We have designed and developed this library as a wrapper around the existing EntityFramework DbContext implementation to provide the following values:
 
@@ -23,6 +25,7 @@ We have designed and developed this library as a wrapper around the existing Ent
 
 # EFxeptions.Identity
 [![preview version](https://img.shields.io/nuget/vpre/EFxceptions.Identity)](https://www.nuget.org/packages/EFxceptions.Identity/absoluteLatest)
+![Nuget](https://img.shields.io/nuget/dt/EFxceptions.Identity?color=blue&label=Downloads)
 
 A dedicated EFxeptions port that provides an `EFxceptionContext` that inherits from `Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext` to inherit from, to support Microsoft ASP.Core Identity using EF Core.
 Available in the [EFxceptions.Identity](https://www.nuget.org/packages/EFxceptions.Identity) package.
