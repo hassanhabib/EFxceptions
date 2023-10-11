@@ -10,16 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checking Out Code
-      uses: actions/checkout@v2
-    - name: Installing .NET
-      uses: actions/setup-dotnet@v1
+    - name: Check out
+      uses: actions/checkout@v3
+    - name: Setup .Net
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.101
-        include-prerelease: false
-    - name: Restoring Nuget Packages
+        dotnet-version: 7.0.201
+    - name: Restore
       run: dotnet restore
-    - name: Building Project
+    - name: Build
       run: dotnet build --no-restore
-    - name: Running Tests
+    - name: Test
       run: dotnet test --no-build --verbosity normal
