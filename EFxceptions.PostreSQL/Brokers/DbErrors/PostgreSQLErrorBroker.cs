@@ -5,11 +5,12 @@
 // See License.txt in the project root for license information.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers.DbErrors;
-using Microsoft.Data.Sqlite;
+using Npgsql;
 
-namespace EFxceptions.Identity.SQLite.Brokers.DbErrors
+namespace EFxceptions.PostgreSQL.Brokers.DbErrors
 {
-    public interface ISQLiteErrorBroker : IDbErrorBroker<SqliteException, int>
-    { }
+    public class PostgreSQLErrorBroker : IPostgreSQLErrorBroker
+    {
+        public string GetSqlErrorCode(PostgresException exception) => exception.SqlState;
+    }
 }

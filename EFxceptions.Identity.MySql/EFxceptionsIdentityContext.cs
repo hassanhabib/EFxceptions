@@ -29,12 +29,12 @@ namespace EFxceptions.Identity.MySql
         protected EFxceptionsIdentityContext()
         { }
 
-        protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<MySqlException, int> CreateErrorBroker() =>
             new MySqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<MySqlException> errorBroker) =>
-                new EFxceptionService<MySqlException>(errorBroker);
+            IDbErrorBroker<MySqlException, int> errorBroker) =>
+                new EFxceptionService<MySqlException, int>(errorBroker);
     }
 
     public class EFxceptionsIdentityContext<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TRoleClaim, TUserToken>
@@ -48,11 +48,11 @@ namespace EFxceptions.Identity.MySql
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
-        protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
+        protected override IDbErrorBroker<MySqlException, int> CreateErrorBroker() =>
             new MySqlErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<MySqlException> errorBroker) =>
-                new EFxceptionService<MySqlException>(errorBroker);
+            IDbErrorBroker<MySqlException, int> errorBroker) =>
+                new EFxceptionService<MySqlException, int>(errorBroker);
     }
 }

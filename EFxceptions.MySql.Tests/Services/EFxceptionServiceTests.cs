@@ -26,7 +26,7 @@ namespace EFxceptions.MySql.Tests.Services
         public EFxceptionServiceTests()
         {
             this.sqlErrorBrokerMock = new Mock<IMySqlErrorBroker>();
-            this.efxceptionService = new EFxceptionService<MySqlException>(this.sqlErrorBrokerMock.Object);
+            this.efxceptionService = new EFxceptionService<MySqlException, int>(this.sqlErrorBrokerMock.Object);
         }
 
         [Fact]

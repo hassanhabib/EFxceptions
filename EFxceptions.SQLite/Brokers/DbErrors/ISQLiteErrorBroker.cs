@@ -10,6 +10,6 @@ using Microsoft.Data.Sqlite;
 
 namespace EFxceptions.SQLite.Brokers.DbErrors
 {
-    public interface ISQLiteErrorBroker : IDbErrorBroker<SqliteException>
+    public interface ISQLiteErrorBroker : IDbErrorBroker<SqliteException, int>
     { }
 }

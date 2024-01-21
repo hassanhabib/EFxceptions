@@ -6,10 +6,10 @@
 // ---------------------------------------------------------------
 
 using EFxceptions.Brokers.DbErrors;
-using Microsoft.Data.Sqlite;
+using Npgsql;
 
-namespace EFxceptions.Identity.SQLite.Brokers.DbErrors
+namespace EFxceptions.PostgreSQL.Brokers.DbErrors
 {
-    public interface ISQLiteErrorBroker : IDbErrorBroker<SqliteException, int>
+    public interface IPostgreSQLErrorBroker : IDbErrorBroker<PostgresException, string>
     { }
 }

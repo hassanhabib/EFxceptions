@@ -7,19 +7,19 @@
 
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Core;
+using EFxceptions.PostgreSQL.Brokers.DbErrors;
 using EFxceptions.Services;
-using EFxceptions.SQLite.Brokers.DbErrors;
-using Microsoft.Data.Sqlite;
+using Npgsql;
 
-namespace EFxceptions.SQLite
+namespace EFxceptions.PostgreSQL
 {
-    public class EFxceptionsContext : DbContextBase<SqliteException, int>
+    public class EFxceptionsContext : DbContextBase<PostgresException, string>
     {
-        protected override IDbErrorBroker<SqliteException, int> CreateErrorBroker() =>
-            new SQLiteErrorBroker();
+        protected override IDbErrorBroker<PostgresException, string> CreateErrorBroker() =>
+            new PostgreSQLErrorBroker();
 
         protected override IEFxceptionService CreateEFxceptionService(
-            IDbErrorBroker<SqliteException, int> errorBroker) =>
-                new EFxceptionService<SqliteException, int>(errorBroker);
+            IDbErrorBroker<PostgresException, string> errorBroker) =>
+                new EFxceptionService<PostgresException, string>(errorBroker);
     }
 }

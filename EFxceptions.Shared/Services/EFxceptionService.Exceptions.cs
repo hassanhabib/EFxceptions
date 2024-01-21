@@ -8,9 +8,9 @@ using EFxceptions.Models.Exceptions;
 
 namespace EFxceptions.Services
 {
-    public partial class EFxceptionService<TDbException>
+    public partial class EFxceptionService<TDbException, TCode>
     {
-        private void ConvertAndThrowMeaningfulException(int code, string message)
+        protected virtual void ConvertAndThrowMeaningfulException(TCode code, string message)
         {
             switch (code)
             {
