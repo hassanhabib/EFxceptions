@@ -2,29 +2,30 @@
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
-		<Version>0.4.4</Version>
+		<Version>1.0.0</Version>
 		<Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
-		<Copyright>Copyright (c) Hassan Habib, Alice Luo and Shimmy Weitzhandler  All rights reserved.</Copyright>
+		<Copyright>The Standard Community (c) 2024. All rights reserved.</Copyright>
 		<PackageLicenseFile>License.txt</PackageLicenseFile>
 		<PackageProjectUrl>https://www.efxceptions.com</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
 		<RepositoryType>github</RepositoryType>
 		<PackageTags>Exceptions EntityFramework</PackageTags>
-		<PackageReleaseNotes>Use latest NuGet dependencies</PackageReleaseNotes>
+		<PackageReleaseNotes>Configure and select history table</PackageReleaseNotes>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageIcon>EFxceptions.png</PackageIcon>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Authors>Hassan Habib, Alice Luo and Shimmy Weitzhandler</Authors>
+		<Authors>H. Habib, A. Luo, S. Weitzhandler, M. Mahdhi</Authors>
 		<Company>Piorsoft, LLC</Company>
-		<AssemblyVersion>0.4.4.0</AssemblyVersion>
-		<FileVersion>0.4.4.0</FileVersion>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,5 +48,5 @@
 			<_Parameter1>EFxceptions.Tests</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
-	
+
 </Project>
