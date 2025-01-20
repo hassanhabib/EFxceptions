@@ -7,19 +7,19 @@ namespace EFxceptions.Extensions
     public static class DbContextExtensions
     {
         /// <summary>
-        /// Configures a temporal table for the specified entity type, with an optional history table name.
+        /// Configures a temporal table for the specified entity type, with an optional table name.
         /// </summary>
         /// <typeparam name="TEntity">The entity type to configure.</typeparam>
         /// <param name="modelBuilder">The <see cref="ModelBuilder"/> used to configure the model.</param>
-        /// <param name="historyTableName">The name of the history table (optional). Defaults to the pluralized entity name.</param>
+        /// <param name="tableName">The name of the table (optional). Defaults to the pluralized entity name.</param>
         public static void ConfigureHistoryTable<TEntity>(
             this ModelBuilder modelBuilder,
-            string historyTableName = "")
+            string tableName = "")
             where TEntity : class
         {
-            if (string.IsNullOrWhiteSpace(historyTableName))
+            if (string.IsNullOrWhiteSpace(tableName))
             {
-                historyTableName = $"{typeof(TEntity).Name}s";
+                tableName = $"{typeof(TEntity).Name}s";
             }
 
             modelBuilder.Entity<TEntity>()

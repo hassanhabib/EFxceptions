@@ -32,5 +32,25 @@ namespace EFxceptions.Tests.Services
             Assert.NotNull(entityType);
             Assert.True(isTemporal);
         }
+
+        [Fact]
+        public void ShouldUseCustomTableName()
+        {
+            // given .. when
+            const string customTableName = "AlsoSomeEntities";
+            var options = new DbContextOptionsBuilder<StorageBroker>()
+                .UseInMemoryDatabase("TestDatabase")
+                .Options;
+
+            using var storageBroker = new StorageBroker(options);
+
+            // then
+            var entityType =
+                storageBroker.Model.FindEntityType(typeof(SomeOtherEntity));
+
+            Assert.NotNull(entityType);
+            Assert.Equal(customTableName, entityType.GetTableName());
+        }
+
     }
 }
