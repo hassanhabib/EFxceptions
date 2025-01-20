@@ -23,7 +23,7 @@ namespace EFxceptions.Extensions
             }
 
             modelBuilder.Entity<TEntity>()
-                .ToTable($"{typeof(TEntity).Name}s", table => table.IsTemporal());
+                .ToTable(tableName, table => table.IsTemporal());
         }
 
         /// <summary>
