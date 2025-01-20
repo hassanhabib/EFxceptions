@@ -52,5 +52,27 @@ namespace EFxceptions.Tests.Services
             Assert.Equal(customTableName, entityType.GetTableName());
         }
 
+
+        [Fact]
+        public void ShouldUseDefaultHistoryTableName()
+        {
+            // given .. when
+            const string expectedTableName = "SomeEntitys";
+            var options = new DbContextOptionsBuilder<StorageBroker>()
+                .UseInMemoryDatabase("TestDatabase")
+                .Options;
+
+            using var storageBroker = new StorageBroker(options);
+
+            // then
+            var acturalEntityType =
+                storageBroker.Model.FindEntityType(typeof(SomeEntity));
+
+            Assert.NotNull(acturalEntityType);
+
+            Assert.Equal(
+                expectedTableName,
+                acturalEntityType.GetTableName());
+        }
     }
 }
