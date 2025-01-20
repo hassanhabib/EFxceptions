@@ -14,6 +14,9 @@ namespace EFxceptions
 {
     public class EFxceptionsContext : DbContextBase<SqlException>
     {
+        public EFxceptionsContext() : base()
+        { }
+
         internal EFxceptionsContext(DbContextOptions options) : base(options)
         { }
 
