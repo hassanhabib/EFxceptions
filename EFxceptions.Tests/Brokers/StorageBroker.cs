@@ -1,4 +1,8 @@
-﻿using EFxceptions.Extensions;
+﻿// ---------------------------------------------------------------
+// Copyright (c) The Standard Community. All rights reserved.
+// ---------------------------------------------------------------
+
+using EFxceptions.Extensions;
 using EFxceptions.Tests.Models;
 using Microsoft.EntityFrameworkCore;
 

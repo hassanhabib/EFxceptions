@@ -1,0 +1,7 @@
+[*.{cs,vb}]
+guidelines = 120
+
+#### Core EditorConfig Options ####
+
+#Formatting - header template
+file_header_template = ---------------------------------------------------------------\nCopyright (c) The Standard Community. All rights reserved.\n---------------------------------------------------------------

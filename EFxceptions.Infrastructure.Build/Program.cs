@@ -1,6 +1,6 @@
-﻿// ----------------------------------------------------------------------------------
-// Copyright (c) The Standard Organization: A coalition of the Good-Hearted Engineers
-// ----------------------------------------------------------------------------------
+﻿// ---------------------------------------------------------------
+// Copyright (c) The Standard Community. All rights reserved.
+// ---------------------------------------------------------------
 
 using ADotNet.Clients;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets;

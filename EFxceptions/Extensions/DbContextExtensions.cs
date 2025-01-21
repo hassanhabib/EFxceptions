@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ---------------------------------------------------------------
+// Copyright (c) The Standard Community. All rights reserved.
+// ---------------------------------------------------------------
+
+using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
