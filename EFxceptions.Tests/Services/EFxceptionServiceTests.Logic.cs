@@ -1,40 +1,25 @@
-﻿// ---------------------------------------------------------------
+// ---------------------------------------------------------------
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
-using EFxceptions.Identity.SQLite.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
-using EFxceptions.Services;
-using Microsoft.Data.Sqlite;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Tynamix.ObjectFiller;
 using Xunit;
 
-namespace EFxceptions.Identity.SQLite.Tests.Services
+namespace EFxceptions.Tests.Services
 {
-    public class EFxceptionServiceTests
+    public partial class EFxceptionServiceTests
     {
-        private readonly Mock<SQLiteErrorBroker> sqlErrorBrokerMock;
-        private readonly IEFxceptionService efxceptionService;
-
-        public EFxceptionServiceTests()
-        {
-            this.sqlErrorBrokerMock = new Mock<SQLiteErrorBroker>();
-
-            this.efxceptionService = new EFxceptionService<SqliteException>(
-               errorBroker: this.sqlErrorBrokerMock.Object);
-        }
-
         [Fact]
         public void ShouldThrowDbUpdateExceptionIfErrorCodeIsNotRecognized()
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 0000;
-            string randomErrorMessage = new MnemonicString().GetValue();
-            SqliteException foreignKeyConstraintConflictException = CreateSqliteException();
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -49,14 +34,13 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
         }
 
-
         [Fact]
         public void ShouldThrowInvalidColumnNameException()
         {
             // given
             int sqlInvalidColumnNameErrorCode = 207;
             string randomErrorMessage = CreateRandomErrorMessage();
-            SqliteException invalidColumnNameException = CreateSqliteException();
+            SqlException invalidColumnNameException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -76,8 +60,8 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         {
             // given
             int sqlInvalidObjectNameErrorCode = 208;
-            string randomErrorMessage = new MnemonicString().GetValue();
-            SqliteException invalidObjectNameException = CreateSqliteException();
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException invalidObjectNameException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -97,8 +81,8 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 547;
-            string randomErrorMessage = new MnemonicString().GetValue();
-            SqliteException foreignKeyConstraintConflictException = CreateSqliteException();
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -118,15 +102,15 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         {
             // given
             int sqlDuplicateKeyErrorCode = 2601;
-            string randomErrorMessage = new MnemonicString().GetValue();
-            SqliteException duplicateKeySqliteException = CreateSqliteException();
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException duplicateKeySqlException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqliteException);
+                innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(duplicateKeySqliteException))
+                broker.GetSqlErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -139,15 +123,15 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         {
             // given
             int sqlDuplicateKeyErrorCode = 2627;
-            string randomErrorMessage = new MnemonicString().GetValue();
-            SqliteException duplicateKeySqliteException = CreateSqliteException();
+            string randomErrorMessage = CreateRandomErrorMessage();
+            SqlException duplicateKeySqlException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
-                innerException: duplicateKeySqliteException);
+                innerException: duplicateKeySqlException);
 
             this.sqlErrorBrokerMock.Setup(broker =>
-                broker.GetSqlErrorCode(duplicateKeySqliteException))
+                broker.GetSqlErrorCode(duplicateKeySqlException))
                     .Returns(sqlDuplicateKeyErrorCode);
 
             // when . then
@@ -156,7 +140,7 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         }
 
         [Fact]
-        public void ShouldThrowDbUpdateExceptionIfSqliteExceptionWasNull()
+        public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
         {
             // given
             var dbUpdateException = new DbUpdateException(null, default(Exception));
@@ -166,15 +150,8 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
                 this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
 
             this.sqlErrorBrokerMock.Verify(broker =>
-                broker.GetSqlErrorCode(It.IsAny<SqliteException>()),
-                    Moq.Times.Never);
+                broker.GetSqlErrorCode(It.IsAny<SqlException>()),
+                    Times.Never);
         }
-
-
-        private SqliteException CreateSqliteException() =>
-            FormatterServices.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
-
-        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
-
 }

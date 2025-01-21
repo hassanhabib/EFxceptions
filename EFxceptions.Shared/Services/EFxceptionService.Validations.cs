@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// ---------------------------------------------------------------
+// Copyright (c) The Standard Community. All rights reserved.
+// ---------------------------------------------------------------
+
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Services
 {

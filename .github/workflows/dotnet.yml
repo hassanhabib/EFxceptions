@@ -15,7 +15,7 @@ jobs:
     - name: Setup .Net
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7.0.201
+        dotnet-version: 9.0.101
     - name: Restore
       run: dotnet restore
     - name: Build

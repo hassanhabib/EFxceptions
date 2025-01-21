@@ -2,11 +2,13 @@
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
-using EFxceptions.Brokers.DbErrors;
-using Microsoft.Data.SqlClient;
+using System;
 
-namespace EFxceptions.Identity.Brokers.DbErrors
+namespace EFxceptions.Tests.Models
 {
-    public interface ISqlErrorBroker : IDbErrorBroker<SqlException>
-    { }
+    internal class SomeEntity
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
 }
