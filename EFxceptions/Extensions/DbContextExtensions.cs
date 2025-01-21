@@ -39,13 +39,12 @@ namespace EFxceptions.Extensions
         /// An <see cref="IQueryable{TEntity}"/> containing the historical records,
         /// ordered by the "PeriodEnd" column descending, excluding the current version.
         /// </returns>
-        public static IQueryable<TEntity> SelectAllEntityHistorys<TEntity>(
+        public static IOrderedQueryable<TEntity> SelectAllEntityHistorys<TEntity>(
             this DbSet<TEntity> dbSet) where TEntity : class
         {
             return dbSet.TemporalAll()
                 .OrderByDescending(entity =>
-                    EF.Property<DateTime>(entity, "PeriodEnd"))
-                .Skip(1);
+                    EF.Property<DateTime>(entity, "PeriodEnd"));
         }
     }
 }
