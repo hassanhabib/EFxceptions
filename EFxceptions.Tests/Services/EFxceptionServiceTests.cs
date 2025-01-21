@@ -27,6 +27,6 @@ namespace EFxceptions.Tests.Services
         private SqlException CreateSqlException() =>
             FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
 
-        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
+        private string CreateRandomErrorMessage() => CreateRandomErrorMessage();
     }
 }
