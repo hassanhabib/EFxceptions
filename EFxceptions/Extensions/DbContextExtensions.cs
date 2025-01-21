@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Extensions
 {
+    /// <summary>
+    /// Provides extension methods for configuring and querying temporal tables in Entity Framework.
+    /// </summary>
     public static class DbContextExtensions
     {
         /// <summary>
@@ -14,7 +17,7 @@ namespace EFxceptions.Extensions
         /// <param name="tableName">The name of the table (optional). Defaults to the pluralized entity name.</param>
         public static void ConfigureHistoryTable<TEntity>(
             this ModelBuilder modelBuilder,
-            string tableName = "")
+            string tableName = null)
             where TEntity : class
         {
             if (string.IsNullOrWhiteSpace(tableName))
@@ -28,7 +31,7 @@ namespace EFxceptions.Extensions
 
         /// <summary>
         /// Retrieves the entire history of a temporal table for the specified entity type,
-        /// ordered by end date descending.
+        /// ordered by end date descending. Current version is included.
         /// </summary>
         /// <typeparam name="TEntity">The entity type to query.</typeparam>
         /// <param name="dbSet">The <see cref="DbSet{TEntity}"/> to query.</param>
