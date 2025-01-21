@@ -15,7 +15,7 @@ namespace EFxceptions.Extensions
         /// <typeparam name="TEntity">The entity type to configure.</typeparam>
         /// <param name="modelBuilder">The <see cref="ModelBuilder"/> used to configure the model.</param>
         /// <param name="tableName">The name of the table (optional). Defaults to the pluralized entity name.</param>
-        public static void ConfigureHistoryTable<TEntity>(
+        public static void ConfigureTempralTable<TEntity>(
             this ModelBuilder modelBuilder,
             string tableName = null)
             where TEntity : class
