@@ -17,9 +17,9 @@ namespace EFxceptions.Tests.Brokers
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ConfigureTempralTable<SomeEntity>();
+            modelBuilder.ConfigureTemporalTable<SomeEntity>();
 
-            modelBuilder.ConfigureTempralTable<SomeOtherEntity>(
+            modelBuilder.ConfigureTemporalTable<SomeOtherEntity>(
                 tableName: "AlsoSomeEntities");
         }
     }

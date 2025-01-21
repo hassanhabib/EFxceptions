@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<NoWarn>CS1591</NoWarn>
-		<Version>1.0.0</Version>
+		<Version>1.0.3</Version>
 		<Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
 		<Copyright>The Standard Community (c) 2024. All rights reserved.</Copyright>
 		<PackageLicenseFile>License.txt</PackageLicenseFile>
@@ -16,10 +16,10 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageIcon>EFxceptions.png</PackageIcon>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Authors>H. Habib, A. Luo, S. Weitzhandler, M. Mahdhi</Authors>
-		<Company>Piorsoft, LLC</Company>
-		<AssemblyVersion>1.0.0.0</AssemblyVersion>
-		<FileVersion>1.0.0.0</FileVersion>
+		<Authors>Hassan Habib</Authors>
+		<Company>The Standard Community</Company>
+		<AssemblyVersion>1.0.3.0</AssemblyVersion>
+		<FileVersion>1.0.3.0</FileVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
