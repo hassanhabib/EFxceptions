@@ -19,7 +19,7 @@ namespace EFxceptions.Extensions
         /// <typeparam name="TEntity">The entity type to configure.</typeparam>
         /// <param name="modelBuilder">The <see cref="ModelBuilder"/> used to configure the model.</param>
         /// <param name="tableName">The name of the table (optional). Defaults to the pluralized entity name.</param>
-        public static void ConfigureTempralTable<TEntity>(
+        public static void ConfigureTemporalTable<TEntity>(
             this ModelBuilder modelBuilder,
             string tableName = null)
             where TEntity : class
@@ -43,7 +43,7 @@ namespace EFxceptions.Extensions
         /// An <see cref="IQueryable{TEntity}"/> containing the historical records,
         /// ordered by the "PeriodEnd" column descending, excluding the current version.
         /// </returns>
-        public static IOrderedQueryable<TEntity> SelectAllEntityHistorys<TEntity>(
+        public static IOrderedQueryable<TEntity> SelectAllEntityHistories<TEntity>(
             this DbSet<TEntity> dbSet) where TEntity : class
         {
             return dbSet.TemporalAll()
