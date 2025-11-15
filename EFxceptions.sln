@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11123.170
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFxceptions", "EFxceptions\EFxceptions.csproj", "{A379F3E6-AF92-4EB6-BA07-FE188DF0AE2D}"
 EndProject
@@ -42,6 +42,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.SQLite", "EFxceptions.Identity.SQLite\EFxceptions.Identity.SQLite.csproj", "{AD934287-74E7-4D73-8DE3-70BFAB4A3C34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.SQLite.Tests", "EFxceptions.Identity.SQLite.Tests\EFxceptions.Identity.SQLite.Tests.csproj", "{3FF9635F-353F-4383-8C95-F41ADB90C405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postgres", "Postgres", "{B8FA76E5-0148-4DF5-B9ED-A108AD70A4CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Postgres", "EFxceptions.Postgres\EFxceptions.Postgres.csproj", "{FF64563E-8BB0-47FE-B3D1-4FA67A38A554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Postgres.Tests", "EFxceptions.Postgres.Tests\EFxceptions.Postgres.Tests.csproj", "{A34B44E7-744B-436C-BC3A-9E1AD12511ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.Postgres", "EFxceptions.Identity.Postgres\EFxceptions.Identity.Postgres.csproj", "{30BD8EC4-E1BC-4D62-95B9-45DC3D764167}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFxceptions.Identity.Postgres.Tests", "EFxceptions.Identity.Postgres.Tests\EFxceptions.Identity.Postgres.Tests.csproj", "{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +119,22 @@ Global
 		{3FF9635F-353F-4383-8C95-F41ADB90C405}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FF9635F-353F-4383-8C95-F41ADB90C405}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF9635F-353F-4383-8C95-F41ADB90C405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF64563E-8BB0-47FE-B3D1-4FA67A38A554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF64563E-8BB0-47FE-B3D1-4FA67A38A554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF64563E-8BB0-47FE-B3D1-4FA67A38A554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF64563E-8BB0-47FE-B3D1-4FA67A38A554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34B44E7-744B-436C-BC3A-9E1AD12511ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34B44E7-744B-436C-BC3A-9E1AD12511ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34B44E7-744B-436C-BC3A-9E1AD12511ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34B44E7-744B-436C-BC3A-9E1AD12511ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30BD8EC4-E1BC-4D62-95B9-45DC3D764167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30BD8EC4-E1BC-4D62-95B9-45DC3D764167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30BD8EC4-E1BC-4D62-95B9-45DC3D764167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30BD8EC4-E1BC-4D62-95B9-45DC3D764167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +154,10 @@ Global
 		{2CFB9357-7A83-4877-9D5B-6481AFA8F2AD} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 		{AD934287-74E7-4D73-8DE3-70BFAB4A3C34} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
 		{3FF9635F-353F-4383-8C95-F41ADB90C405} = {727CF9AE-D1CD-44DE-9F95-735973F1B04F}
+		{FF64563E-8BB0-47FE-B3D1-4FA67A38A554} = {B8FA76E5-0148-4DF5-B9ED-A108AD70A4CA}
+		{A34B44E7-744B-436C-BC3A-9E1AD12511ED} = {B8FA76E5-0148-4DF5-B9ED-A108AD70A4CA}
+		{30BD8EC4-E1BC-4D62-95B9-45DC3D764167} = {B8FA76E5-0148-4DF5-B9ED-A108AD70A4CA}
+		{4081A816-8C60-4F05-B81B-EB1D0A3D4AEF} = {B8FA76E5-0148-4DF5-B9ED-A108AD70A4CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DCA463B2-B2AC-41DD-8F64-4D9D5C9C1E1A}

@@ -22,6 +22,15 @@ namespace EFxceptions.Services
                     throw new DuplicateKeyWithUniqueIndexException(message);
                 case 2627:
                     throw new DuplicateKeyException(message);
+
+                case 23505:
+                    throw new DuplicateKeyException(message);
+                case 23503:
+                    throw new ForeignKeyConstraintConflictException(message);
+                case 23502:
+                    throw new ForeignKeyConflictException(message);
+                case 42703:
+                    throw new InvalidColumnNameException(message);
             }
         }
     }

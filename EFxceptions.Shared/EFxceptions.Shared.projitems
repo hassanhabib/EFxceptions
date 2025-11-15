@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Brokers\DbErrors\IDbErrorBroker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\DuplicateKeyWithUniqueIndexException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\DuplicateKeyException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)models\exceptions\ForeignKeyConflictException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\ForeignKeyConstraintConflictException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidColumnNameException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Exceptions\InvalidObjectNameException.cs" />
