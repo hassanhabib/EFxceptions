@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<NoWarn>CS1591</NoWarn>
 		<Version>1.0.3</Version>
 		<Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
