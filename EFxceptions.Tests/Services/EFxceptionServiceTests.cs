@@ -2,7 +2,7 @@
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using EFxceptions.Brokers.DbErrors;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
@@ -25,7 +25,7 @@ namespace EFxceptions.Tests.Services
         }
 
         private SqlException CreateSqlException() =>
-            FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
+            RuntimeHelpers.GetUninitializedObject(typeof(SqlException)) as SqlException;
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }

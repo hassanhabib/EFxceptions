@@ -8,7 +8,7 @@ namespace EFxceptions.Identity.SQLite.Brokers.DbErrors
 {
     public class SQLiteErrorBroker : ISQLiteErrorBroker
     {
-        public virtual int GetSqlErrorCode(SqliteException exception) =>
+        public int GetSqlErrorCode(SqliteException exception) =>
             exception.SqliteErrorCode;
     }
 }

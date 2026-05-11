@@ -7,11 +7,18 @@ using EFxceptions.Core;
 using EFxceptions.Services;
 using EFxceptions.SQLite.Brokers.DbErrors;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.SQLite
 {
     public class EFxceptionsContext : DbContextBase<SqliteException>
     {
+        public EFxceptionsContext()
+        { }
+
+        public EFxceptionsContext(DbContextOptions options) : base(options)
+        { }
+
         protected override IDbErrorBroker<SqliteException> CreateErrorBroker() =>
             new SQLiteErrorBroker();
 

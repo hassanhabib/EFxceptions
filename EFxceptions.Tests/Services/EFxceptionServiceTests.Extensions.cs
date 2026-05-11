@@ -63,14 +63,14 @@ namespace EFxceptions.Tests.Services
             using var storageBroker = new StorageBroker(options);
 
             // then
-            var acturalEntityType =
+            var actualEntityType =
                 storageBroker.Model.FindEntityType(typeof(SomeEntity));
 
-            Assert.NotNull(acturalEntityType);
+            Assert.NotNull(actualEntityType);
 
             Assert.Equal(
                 expectedTableName,
-                acturalEntityType.GetTableName());
+                actualEntityType.GetTableName());
         }
     }
 }

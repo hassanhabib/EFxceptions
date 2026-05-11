@@ -1,44 +1,51 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFrameworks>net9.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<Version>1.1.0</Version>
-		<Description>EFxceptions is a .NET Standard library that captures the exceptions thrown by the EntityFramework from a SQL server and converts them into meaningful exceptions.</Description>
-		<Copyright>The Standard Community (c) 2024. All rights reserved.</Copyright>
-		<PackageLicenseFile>License.txt</PackageLicenseFile>
-		<PackageProjectUrl>https://www.efxceptions.com</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
-		<RepositoryType>github</RepositoryType>
-		<PackageTags>Exceptions EntityFramework</PackageTags>
-		<PackageReleaseNotes>Configure and select history table</PackageReleaseNotes>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageIcon>EFxceptions.png</PackageIcon>
-		<NeutralLanguage>en</NeutralLanguage>
+		<Version>9.0.0</Version>
+		<AssemblyVersion>9.0.0.0</AssemblyVersion>
+		<FileVersion>9.0.0.0</FileVersion>
+		<Description>
+			EFxceptions is a .NET library that captures the exceptions thrown by Entity Framework
+			from a SQL server and converts them into meaningful, domain-friendly exceptions.
+			This package specifically targets Microsoft.EntityFrameworkCore 9.0.15.
+		</Description>
+		<Copyright>Copyright (c) The Standard Community</Copyright>
 		<Authors>Hassan Habib</Authors>
 		<Company>The Standard Community</Company>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
-		<FileVersion>1.1.0.0</FileVersion>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageProjectUrl>https://github.com/hassanhabib/EFxceptions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>Exceptions EntityFramework EFCore SqlServer</PackageTags>
+		<PackageReleaseNotes>Configure and select history table</PackageReleaseNotes>
+		<PackageIcon>EFxceptions.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>License.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.15" />
 	</ItemGroup>
 
 	<Import Project="..\EFxceptions.Shared\EFxceptions.Shared.projitems" Label="Shared" />
 
 	<ItemGroup>
-		<None Include="..\EFxceptions.Shared\License.txt">
-			<Pack>True</Pack>
+		<None Include="..\README.md">
+			<Pack>true</Pack>
 			<PackagePath></PackagePath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Include="..\EFxceptions.Shared\Resources\EFxceptions.png">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
+		<None Include="..\EFxceptions.Shared\License.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\EFxceptions.Shared\Resources\EFxceptions.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 </Project>

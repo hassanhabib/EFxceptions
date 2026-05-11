@@ -2,10 +2,74 @@
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
+using EFxceptions.Identity.Tests.Brokers;
+using EFxceptions.Identity.Tests.Models;
+using Microsoft.EntityFrameworkCore;
+using Xunit;
+
 namespace EFxceptions.Identity.Tests
 {
     public partial class EFxceptionServiceTests
     {
+        [Fact]
+        public void ShouldConfigureHistoryTable()
+        {
+            // given.. when
+            var options = new DbContextOptionsBuilder<StorageBroker>()
+                .UseInMemoryDatabase("TestDatabase")
+                .Options;
 
+            var storageBroker = new StorageBroker(options);
+
+            // then
+            var entityType =
+                storageBroker.Model.FindEntityType(typeof(SomeEntity));
+
+            var isTemporal = entityType.IsTemporal();
+
+            Assert.NotNull(entityType);
+            Assert.True(isTemporal);
+        }
+
+        [Fact]
+        public void ShouldUseCustomTableName()
+        {
+            // given .. when
+            const string customTableName = "AlsoSomeEntities";
+            var options = new DbContextOptionsBuilder<StorageBroker>()
+                .UseInMemoryDatabase("TestDatabase")
+                .Options;
+
+            using var storageBroker = new StorageBroker(options);
+
+            // then
+            var entityType =
+                storageBroker.Model.FindEntityType(typeof(SomeOtherEntity));
+
+            Assert.NotNull(entityType);
+            Assert.Equal(customTableName, entityType.GetTableName());
+        }
+
+        [Fact]
+        public void ShouldUseDefaultHistoryTableName()
+        {
+            // given .. when
+            const string expectedTableName = "SomeEntitys";
+            var options = new DbContextOptionsBuilder<StorageBroker>()
+                .UseInMemoryDatabase("TestDatabase")
+                .Options;
+
+            using var storageBroker = new StorageBroker(options);
+
+            // then
+            var actualEntityType =
+                storageBroker.Model.FindEntityType(typeof(SomeEntity));
+
+            Assert.NotNull(actualEntityType);
+
+            Assert.Equal(
+                expectedTableName,
+                actualEntityType.GetTableName());
+        }
     }
 }

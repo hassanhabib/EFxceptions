@@ -1,17 +1,56 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
+    <Version>9.0.0</Version>
+    <AssemblyVersion>9.0.0.0</AssemblyVersion>
+    <FileVersion>9.0.0.0</FileVersion>
+    <Description>
+      EFxceptions.SQLite captures exceptions thrown by Entity Framework against a SQLite database
+      and converts them into meaningful, domain-friendly exceptions.
+      This package specifically targets Microsoft.EntityFrameworkCore 9.0.15.
+    </Description>
+    <Copyright>Copyright (c) The Standard Community</Copyright>
+    <Authors>Hassan Habib</Authors>
+    <Company>The Standard Community</Company>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageProjectUrl>https://github.com/hassanhabib/EFxceptions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Exceptions EntityFramework EFCore SQLite</PackageTags>
+    <PackageReleaseNotes>Configure and select history table</PackageReleaseNotes>
+    <PackageIcon>EFxceptions.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EFxceptions.Core\EFxceptions.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\EFxceptions.Shared\License.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\EFxceptions.Shared\Resources\EFxceptions.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>

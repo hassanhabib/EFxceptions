@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using EFxceptions.Identity.SQLite.Brokers.DbErrors;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
@@ -17,12 +17,12 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
 {
     public class EFxceptionServiceTests
     {
-        private readonly Mock<SQLiteErrorBroker> sqlErrorBrokerMock;
+        private readonly Mock<ISQLiteErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
 
         public EFxceptionServiceTests()
         {
-            this.sqlErrorBrokerMock = new Mock<SQLiteErrorBroker>();
+            this.sqlErrorBrokerMock = new Mock<ISQLiteErrorBroker>();
 
             this.efxceptionService = new EFxceptionService<SqliteException>(
                errorBroker: this.sqlErrorBrokerMock.Object);
@@ -156,6 +156,21 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
         }
 
         [Fact]
+        public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
+        {
+            // given
+            string randomErrorMessage = CreateRandomErrorMessage();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: new Exception(randomErrorMessage));
+
+            // when . then
+            Assert.Throws<InvalidCastException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfSqliteExceptionWasNull()
         {
             // given
@@ -172,7 +187,7 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
 
 
         private SqliteException CreateSqliteException() =>
-            FormatterServices.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
+            RuntimeHelpers.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }

@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.Services;
 using EFxceptions.SQLite.Brokers.DbErrors;
@@ -155,6 +155,21 @@ namespace EFxceptions.SQLite.Tests.Services
         }
 
         [Fact]
+        public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
+        {
+            // given
+            string randomErrorMessage = CreateRandomErrorMessage();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: new Exception(randomErrorMessage));
+
+            // when . then
+            Assert.Throws<InvalidCastException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfSqliteExceptionWasNull()
         {
             // given
@@ -170,7 +185,7 @@ namespace EFxceptions.SQLite.Tests.Services
         }
 
         private SqliteException CreateSqliteException() =>
-           FormatterServices.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
+           RuntimeHelpers.GetUninitializedObject(typeof(SqliteException)) as SqliteException;
 
         private string CreateRandomErrorMessage() =>
             new MnemonicString().GetValue();
