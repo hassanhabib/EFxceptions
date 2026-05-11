@@ -27,6 +27,16 @@ namespace EFxceptions.Services
             throw dbUpdateException;
         }
 
-        private TDbException GetSqlException(Exception exception) => (TDbException)exception;
+        private TDbException GetSqlException(Exception exception)
+        {
+            if (exception is not TDbException dbException)
+            {
+                throw new InvalidCastException(
+                    $"Expected inner exception of type {typeof(TDbException).Name} " +
+                    $"but found {exception.GetType().Name}.");
+            }
+
+            return dbException;
+        }
     }
 }
