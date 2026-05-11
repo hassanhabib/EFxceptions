@@ -2,10 +2,12 @@
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using EFxceptions.Identity.Brokers.DbErrors;
 using EFxceptions.Services;
 using Microsoft.Data.SqlClient;
 using Moq;
+using Tynamix.ObjectFiller;
 
 namespace EFxceptions.Identity.Tests
 {
@@ -14,7 +16,6 @@ namespace EFxceptions.Identity.Tests
         private readonly Mock<ISqlErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
 
-
         public EFxceptionServiceTests()
         {
             this.sqlErrorBrokerMock = new Mock<ISqlErrorBroker>();
@@ -22,5 +23,10 @@ namespace EFxceptions.Identity.Tests
             this.efxceptionService = new EFxceptionService<SqlException>(
                 this.sqlErrorBrokerMock.Object);
         }
+
+        private SqlException CreateSqlException() =>
+            RuntimeHelpers.GetUninitializedObject(typeof(SqlException)) as SqlException;
+
+        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
 }

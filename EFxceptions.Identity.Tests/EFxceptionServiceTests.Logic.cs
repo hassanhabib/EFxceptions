@@ -3,12 +3,10 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using EFxceptions.Models.Exceptions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using Tynamix.ObjectFiller;
 using Xunit;
 
 namespace EFxceptions.Identity.Tests
@@ -20,7 +18,7 @@ namespace EFxceptions.Identity.Tests
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 0000;
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
@@ -62,7 +60,7 @@ namespace EFxceptions.Identity.Tests
         {
             // given
             int sqlInvalidObjectNameErrorCode = 208;
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
             SqlException invalidObjectNameException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
@@ -83,7 +81,7 @@ namespace EFxceptions.Identity.Tests
         {
             // given
             int sqlForeignKeyConstraintConflictErrorCode = 547;
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
             SqlException foreignKeyConstraintConflictException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
@@ -104,7 +102,7 @@ namespace EFxceptions.Identity.Tests
         {
             // given
             int sqlDuplicateKeyErrorCode = 2601;
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
             SqlException duplicateKeySqlException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
@@ -125,7 +123,7 @@ namespace EFxceptions.Identity.Tests
         {
             // given
             int sqlDuplicateKeyErrorCode = 2627;
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
             SqlException duplicateKeySqlException = CreateSqlException();
 
             var dbUpdateException = new DbUpdateException(
@@ -145,7 +143,7 @@ namespace EFxceptions.Identity.Tests
         public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
         {
             // given
-            string randomErrorMessage = new MnemonicString().GetValue();
+            string randomErrorMessage = CreateRandomErrorMessage();
 
             var dbUpdateException = new DbUpdateException(
                 message: randomErrorMessage,
@@ -170,10 +168,5 @@ namespace EFxceptions.Identity.Tests
                 broker.GetSqlErrorCode(It.IsAny<SqlException>()),
                     Times.Never);
         }
-
-        private SqlException CreateSqlException() =>
-            RuntimeHelpers.GetUninitializedObject(typeof(SqlException)) as SqlException;
-
-        private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
 }
