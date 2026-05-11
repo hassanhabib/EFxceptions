@@ -20,10 +20,10 @@ namespace EFxceptions.Identity.MySql
        where TRole : IdentityRole<TKey>
        where TKey : IEquatable<TKey>
     {
-        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        protected EFxceptionsIdentityContext()
         { }
 
-        protected EFxceptionsIdentityContext()
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
         { }
 
         protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
