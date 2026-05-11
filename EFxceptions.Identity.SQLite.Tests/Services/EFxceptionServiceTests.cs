@@ -17,12 +17,12 @@ namespace EFxceptions.Identity.SQLite.Tests.Services
 {
     public class EFxceptionServiceTests
     {
-        private readonly Mock<SQLiteErrorBroker> sqlErrorBrokerMock;
+        private readonly Mock<ISQLiteErrorBroker> sqlErrorBrokerMock;
         private readonly IEFxceptionService efxceptionService;
 
         public EFxceptionServiceTests()
         {
-            this.sqlErrorBrokerMock = new Mock<SQLiteErrorBroker>();
+            this.sqlErrorBrokerMock = new Mock<ISQLiteErrorBroker>();
 
             this.efxceptionService = new EFxceptionService<SqliteException>(
                errorBroker: this.sqlErrorBrokerMock.Object);
