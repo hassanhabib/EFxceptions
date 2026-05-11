@@ -18,14 +18,11 @@ namespace EFxceptions
         public EFxceptionsContext(DbContextOptions options) : base(options)
         { }
 
-        protected override IDbErrorBroker<SqlException> CreateErrorBroker()
-        {
-            return new SqlErrorBroker();
-        }
+        protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
+            new SqlErrorBroker();
 
-        protected override IEFxceptionService CreateEFxceptionService(IDbErrorBroker<SqlException> errorBroker)
-        {
-            return new EFxceptionService<SqlException>(errorBroker);
-        }
+        protected override IEFxceptionService CreateEFxceptionService(
+            IDbErrorBroker<SqlException> errorBroker) =>
+                new EFxceptionService<SqlException>(errorBroker);
     }
 }
