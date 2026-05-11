@@ -15,7 +15,7 @@ namespace EFxceptions
         public EFxceptionsContext() : base()
         { }
 
-        internal EFxceptionsContext(DbContextOptions options) : base(options)
+        public EFxceptionsContext(DbContextOptions options) : base(options)
         { }
 
         protected override IDbErrorBroker<SqlException> CreateErrorBroker()
