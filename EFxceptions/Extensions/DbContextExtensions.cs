@@ -35,13 +35,13 @@ namespace EFxceptions.Extensions
 
         /// <summary>
         /// Retrieves the entire history of a temporal table for the specified entity type,
-        /// ordered by end date descending. Current version is included.
+        /// ordered by end date descending. Current and all historical versions are included.
         /// </summary>
         /// <typeparam name="TEntity">The entity type to query.</typeparam>
         /// <param name="dbSet">The <see cref="DbSet{TEntity}"/> to query.</param>
         /// <returns>
-        /// An <see cref="IQueryable{TEntity}"/> containing the historical records,
-        /// ordered by the "PeriodEnd" column descending, excluding the current version.
+        /// An <see cref="IQueryable{TEntity}"/> containing all records (current and historical),
+        /// ordered by the "PeriodEnd" column descending.
         /// </returns>
         public static IOrderedQueryable<TEntity> SelectAllEntityHistorys<TEntity>(
             this DbSet<TEntity> dbSet) where TEntity : class
