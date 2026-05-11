@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using EFxceptions.Models.Exceptions;
 using EFxceptions.MySql.Brokers.DbErrors;
 using EFxceptions.Services;
@@ -153,6 +153,21 @@ namespace EFxceptions.MySql.Tests.Services
         }
 
         [Fact]
+        public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
+        {
+            // given
+            string randomErrorMessage = CreateRandomErrorMessage();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: new Exception(randomErrorMessage));
+
+            // when . then
+            Assert.Throws<InvalidCastException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfMySqlExceptionWasNull()
         {
             // given
@@ -168,7 +183,7 @@ namespace EFxceptions.MySql.Tests.Services
         }
 
         private MySqlException CreateMySqlException() =>
-            FormatterServices.GetUninitializedObject(typeof(MySqlException)) as MySqlException;
+            RuntimeHelpers.GetUninitializedObject(typeof(MySqlException)) as MySqlException;
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }

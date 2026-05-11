@@ -45,6 +45,12 @@ namespace EFxceptions.Identity.MySql
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
+        protected EFxceptionsIdentityContext()
+        { }
+
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        { }
+
         protected override IDbErrorBroker<MySqlException> CreateErrorBroker() =>
             new MySqlErrorBroker();
 

@@ -140,6 +140,21 @@ namespace EFxceptions.Tests.Services
         }
 
         [Fact]
+        public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
+        {
+            // given
+            string randomErrorMessage = CreateRandomErrorMessage();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: new Exception(randomErrorMessage));
+
+            // when . then
+            Assert.Throws<InvalidCastException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
         {
             // given

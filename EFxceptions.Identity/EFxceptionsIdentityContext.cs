@@ -46,6 +46,12 @@ namespace EFxceptions.Identity
         where TRoleClaim : IdentityRoleClaim<TKey>
         where TUserToken : IdentityUserToken<TKey>
     {
+        protected EFxceptionsIdentityContext()
+        { }
+
+        public EFxceptionsIdentityContext(DbContextOptions options) : base(options)
+        { }
+
         protected override IDbErrorBroker<SqlException> CreateErrorBroker() =>
             new SqlErrorBroker();
 

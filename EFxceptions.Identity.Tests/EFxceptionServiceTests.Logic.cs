@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------
 
 using System;
-using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using EFxceptions.Models.Exceptions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -142,6 +142,21 @@ namespace EFxceptions.Identity.Tests
         }
 
         [Fact]
+        public void ShouldThrowInvalidCastExceptionIfInnerExceptionIsWrongType()
+        {
+            // given
+            string randomErrorMessage = new MnemonicString().GetValue();
+
+            var dbUpdateException = new DbUpdateException(
+                message: randomErrorMessage,
+                innerException: new Exception(randomErrorMessage));
+
+            // when . then
+            Assert.Throws<InvalidCastException>(() =>
+                this.efxceptionService.ThrowMeaningfulException(dbUpdateException));
+        }
+
+        [Fact]
         public void ShouldThrowDbUpdateExceptionIfSqlExceptionWasNull()
         {
             // given
@@ -157,7 +172,7 @@ namespace EFxceptions.Identity.Tests
         }
 
         private SqlException CreateSqlException() =>
-            FormatterServices.GetUninitializedObject(typeof(SqlException)) as SqlException;
+            RuntimeHelpers.GetUninitializedObject(typeof(SqlException)) as SqlException;
 
         private string CreateRandomErrorMessage() => new MnemonicString().GetValue();
     }
