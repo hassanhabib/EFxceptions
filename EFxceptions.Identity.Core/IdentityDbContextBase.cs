@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFxceptions.Identity.Core
 {
-    public class IdentityDbContextBase<TUser> : IdentityDbContext<TUser, IdentityRole, string>
+    public abstract class IdentityDbContextBase<TUser> : IdentityDbContext<TUser, IdentityRole, string>
         where TUser : IdentityUser
     {
         protected IdentityDbContextBase()
