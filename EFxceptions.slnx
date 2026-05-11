@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="EFxceptions.Core/EFxceptions.Core.csproj" />
+    <Project Path="EFxceptions.Identity.Core/EFxceptions.Identity.Core.csproj" />
+  </Folder>
+  <Folder Name="/MySql/">
+    <Project Path="EFxceptions.Identity.MySql.Tests/EFxceptions.Identity.MySql.Tests.csproj" />
+    <Project Path="EFxceptions.Identity.MySql/EFxceptions.Identity.MySql.csproj" />
+    <Project Path="EFxceptions.MySql.Tests/EFxceptions.MySql.Tests.csproj" />
+    <Project Path="EFxceptions.MySql/EFxceptions.MySql.csproj" />
+  </Folder>
+  <Folder Name="/SQLite/">
+    <Project Path="EFxceptions.Identity.SQLite.Tests/EFxceptions.Identity.SQLite.Tests.csproj" />
+    <Project Path="EFxceptions.Identity.SQLite/EFxceptions.Identity.SQLite.csproj" />
+    <Project Path="EFxceptions.SQLite.Tests/EFxceptions.SQLite.Tests.csproj" />
+    <Project Path="EFxceptions.SQLite/EFxceptions.SQLite.csproj" />
+  </Folder>
+  <Folder Name="/SqlServer/">
+    <Project Path="EFxceptions.Identity.Tests/EFxceptions.Identity.Tests.csproj" />
+    <Project Path="EFxceptions.Identity/EFxceptions.Identity.csproj" />
+    <Project Path="EFxceptions.Tests/EFxceptions.Tests.csproj" />
+    <Project Path="EFxceptions/EFxceptions.csproj" />
+  </Folder>
+  <Project Path="EFxceptions.Infrastructure.Build/EFxceptions.Infrastructure.Build.csproj" />
+  <Project Path="EFxceptions.Shared/EFxceptions.Shared.shproj" />
+</Solution>

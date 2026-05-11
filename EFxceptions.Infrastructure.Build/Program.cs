@@ -2,81 +2,22 @@
 // Copyright (c) The Standard Community. All rights reserved.
 // ---------------------------------------------------------------
 
-using ADotNet.Clients;
-using ADotNet.Models.Pipelines.GithubPipelines.DotNets;
-using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks;
-using ADotNet.Models.Pipelines.GithubPipelines.DotNets.Tasks.SetupDotNetTaskV3s;
+using EFxceptions.Infrastructure.Build.Services;
 
-var githubPipeLine = new GithubPipeline
+namespace EFxceptions.Infrastructure.Build
 {
-    Name = "EFxceptions Build Pipeline",
-
-    OnEvents = new Events
+    internal class Program
     {
-        PullRequest = new PullRequestEvent
+        static void Main(string[] args)
         {
-            Branches = new string[] { "master" }
-        },
-        Push = new PushEvent
-        {
-            Branches = new string[] { "master" }
-        }
-    },
+            var scriptGenerationService = new ScriptGenerationService();
 
-    Jobs = new Dictionary<string, Job>
-    {
-        {
-            "build",
-            new Job
-            {
-                RunsOn = BuildMachines.UbuntuLatest,
+            scriptGenerationService.GenerateBuildScript(
+                branchName: "main",
+                projectName: "EFxceptions.Core",
+                dotNetVersion: "10.x");
 
-                Steps = new List<GithubTask>
-                {
-                    new CheckoutTaskV3
-                    {
-                        Name = "Check out"
-                    },
-
-                    new SetupDotNetTaskV3
-                    {
-                        Name = "Setup .Net",
-
-                        With = new TargetDotNetVersionV3
-                        {
-                            DotNetVersion = "9.0.101"
-                        }
-                    },
-
-                    new RestoreTask
-                    {
-                        Name = "Restore"
-                    },
-
-                    new DotNetBuildTask
-                    {
-                        Name = "Build"
-                    },
-
-                    new TestTask
-                    {
-                        Name = "Test"
-                    }
-                }
-            }
+            scriptGenerationService.GeneratePrLintScript(branchName: "main");
         }
     }
-};
-
-var adotNetClient = new ADotNetClient();
-
-string buildScriptPath = "../../../../.github/workflows/dotnet.yml";
-string directoryPath = Path.GetDirectoryName(buildScriptPath);
-
-if (!Directory.Exists(directoryPath))
-{
-    Directory.CreateDirectory(directoryPath);
 }
-
-adotNetClient.SerializeAndWriteToFile(adoPipeline: githubPipeLine, path: buildScriptPath);
-
