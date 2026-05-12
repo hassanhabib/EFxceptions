@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <Version>9.0.0</Version>
-    <AssemblyVersion>9.0.0.0</AssemblyVersion>
-    <FileVersion>9.0.0.0</FileVersion>
+    <Version>10.0.0</Version>
+    <AssemblyVersion>10.0.0.0</AssemblyVersion>
+    <FileVersion>10.0.0.0</FileVersion>
     <Description>
       EFxceptions.MySql captures exceptions thrown by Entity Framework against a MySQL database
       and converts them into meaningful, domain-friendly exceptions.
-      This package specifically targets Microsoft.EntityFrameworkCore 9.0.15.
+      This package specifically targets Microsoft.EntityFrameworkCore 10.0.7.
     </Description>
     <Copyright>Copyright (c) The Standard Community</Copyright>
     <Authors>Hassan Habib</Authors>
@@ -20,7 +20,7 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Exceptions EntityFramework EFCore MySql</PackageTags>
-    <PackageReleaseNotes>Configure and select history table</PackageReleaseNotes>
+    <PackageReleaseNotes>Upgrade to net10 and targeting Microsoft.EntityFrameworkCore 10.0.7</PackageReleaseNotes>
     <PackageIcon>EFxceptions.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
