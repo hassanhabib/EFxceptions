@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/hassanhabib/EFxceptions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Exceptions EntityFramework EFCore Identity AspNetCore SqlServer</PackageTags>
-    <PackageReleaseNotes>Use latest NuGet dependencies</PackageReleaseNotes>
+    <PackageReleaseNotes>Upgrade to net10 and targeting Microsoft.EntityFrameworkCore 10.0.7</PackageReleaseNotes>
     <PackageIcon>EFxceptions.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
